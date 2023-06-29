@@ -1,6 +1,5 @@
 (library
- (library_flags (-linkall))
  (name ocaml_int)
- (ocamlopt_flags
-  (-inline 1))
- (libraries unix))
+ (libraries base)
+ (flags
+  (-w -26)))
