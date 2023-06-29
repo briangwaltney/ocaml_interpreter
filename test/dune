@@ -1,2 +1,3 @@
 (test
- (name ocaml_int))
+ (name ocaml_int)
+ (libraries ocaml_int))

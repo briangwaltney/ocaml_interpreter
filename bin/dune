@@ -1,4 +1,4 @@
 (executable
- (public_name ocaml_int)
+ (public_name main)
  (name main)
  (libraries ocaml_int base))
