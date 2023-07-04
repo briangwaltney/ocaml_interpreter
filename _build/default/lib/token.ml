@@ -1,5 +1,5 @@
 type t =
-  | Illegel
+  | Illegal
   | Ident of string
   | Integer of string
   | Assign
@@ -39,25 +39,25 @@ let ident_lookup str =
 ;;
 
 let string_of_token = function
-  | Illegel -> "Illegel"
-  | Ident a -> "Ident " ^ a
+  | Illegal -> "Illegal"
+  | Ident a -> "Identity " ^ a
   | Integer a -> "Integer " ^ a
   | Assign -> "Assign"
-  | Plus -> "Plus"
-  | Minus -> "Minus"
-  | Bang -> "Bang"
-  | Asterisk -> "Asterisk"
-  | Slash -> "Slash"
-  | LessThan -> "LessThan"
-  | GreaterThan -> "GreaterThan"
-  | Equal -> "Equal"
-  | NotEqual -> "NotEqual"
-  | Comma -> "Comma"
-  | Semicolon -> "Semicolon"
-  | LeftParen -> "LeftParen"
-  | RightParen -> "RightParen"
-  | LeftBrace -> "LeftBrace"
-  | RightBrace -> "RightBrace"
+  | Plus -> "+"
+  | Minus -> "-"
+  | Bang -> "!"
+  | Asterisk -> "*"
+  | Slash -> "/"
+  | LessThan -> "<"
+  | GreaterThan -> ">"
+  | Equal -> "="
+  | NotEqual -> "!="
+  | Comma -> ","
+  | Semicolon -> ";"
+  | LeftParen -> "("
+  | RightParen -> ")"
+  | LeftBrace -> "{"
+  | RightBrace -> "}"
   | Function -> "Function"
   | Let -> "Let"
   | True -> "True"

@@ -1,4 +1,4 @@
 (lang dune 3.8)
 (name ocaml_int)
 (sections (lib .) (bin ../../bin))
-(files (lib (META dune-package opam)) (bin (ocaml_int)))
+(files (lib (META dune-package opam)) (bin (main repl)))

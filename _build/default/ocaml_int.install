@@ -4,5 +4,6 @@ lib: [
   "_build/install/default/lib/ocaml_int/opam"
 ]
 bin: [
-  "_build/install/default/bin/ocaml_int"
+  "_build/install/default/bin/main"
+  "_build/install/default/bin/repl"
 ]

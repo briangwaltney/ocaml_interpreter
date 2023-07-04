@@ -1,7 +1,8 @@
 open Ocaml_int.Lexer
 open Ocaml_int.Token
+(* open Ocaml_int.Parser *)
 
-let test =
+let lexer_test_str =
   "let five = 5;\n\
    let ten = 10;\n\
   \   let add = fn(x, y) {\n\
@@ -18,7 +19,7 @@ let test =
 ;;
 
 assert (
-  tokens_of_string test
+  tokens_of_string lexer_test_str
   = [ Let
     ; Ident "five"
     ; Assign
