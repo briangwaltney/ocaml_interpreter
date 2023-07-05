@@ -3,6 +3,7 @@ open Token
 type expression =
   | Identifier of string
   | IntegerLiteral of int
+  | BooleanLiteral of bool
   | PrefixExpression of
       { op : string
       ; right : expression
@@ -31,6 +32,7 @@ let rec string_of_exp exp =
   match exp with
   | Identifier str -> str
   | IntegerLiteral num -> string_of_int num
+  | BooleanLiteral boolean -> string_of_bool boolean
   | PrefixExpression { op; right } -> op ^ string_of_exp right
   | InfixExpression { op; left; right } ->
     "(" ^ string_of_exp left ^ op ^ string_of_exp right ^ ")"
