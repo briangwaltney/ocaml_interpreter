@@ -1,1 +1,1 @@
-lib/parser.ml: Ast Lexer List String Token
+lib/parser.ml: Ast Lexer Token
