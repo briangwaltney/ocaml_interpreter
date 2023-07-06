@@ -120,7 +120,7 @@ and parse_exp lst precedence =
        | RightBrace -> left, t
        | Comma -> left, t
        | tkn when is_infix tkn = false -> left, t
-       | infix when prec_of_tkn infix < precedence -> left, t
+       | infix when prec_of_tkn infix <= precedence -> left, t
        | op ->
          let exp, new_t = parse_infix left t in
          loop new_t (prec_of_tkn op) exp)
@@ -165,14 +165,14 @@ and parse_statements is_block lexer_lst =
 
 let parse_program str =
   let statement_lst, _ = parse_statements false (str |> Lexer.tokens_of_string) in
-  statement_lst
+  statement_lst |> List.rev
 ;;
 
-let test_string = "let five = 5 + 6; return  6+5"
-let program = test_string |> parse_program |> List.rev;;
-
-print_newline ();;
-print_newline ()
-
-let () = program |> string_of_stmts |> print_endline
-let run_program () = test_string |> Lexer.tokens_of_string |> parse_statements false
+(* let test_string = "let five = 5 + 6; return  6+5" *)
+(* let program = test_string |> parse_program ;; *)
+(***)
+(* print_newline ();; *)
+(* print_newline () *)
+(***)
+(* let () = program |> string_of_stmts |> print_endline *)
+(* let run_program () = test_string |> Lexer.tokens_of_string |> parse_statements false *)
