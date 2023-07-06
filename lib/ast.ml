@@ -16,7 +16,11 @@ type expression =
   | IfExpression of
       { con : expression
       ; cons : statement list
-      ; alt : statement list
+      ; alt : statement list option
+      }
+  | FunctionLiteral of
+      { params : expression list option
+      ; body : statement
       }
 
 and statement =
@@ -48,7 +52,21 @@ let rec string_of_exp exp =
     ^ ") "
     ^ string_of_stmts cons
     ^ " else "
-    ^ string_of_stmts alt
+    ^ string_of_stmts
+        (match alt with
+         | Some alt -> alt
+         | None -> [])
+  | FunctionLiteral { params; body } ->
+    "fn("
+    ^ String.concat
+        ", "
+        (List.map
+           string_of_exp
+           (match params with
+            | Some lst -> lst
+            | None -> []))
+    ^ ") "
+    ^ string_of_stmt body
 
 and string_of_stmts stmts =
   "{\n" ^ String.concat "\n" (List.map string_of_stmt stmts) ^ "\n}"

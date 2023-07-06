@@ -71,13 +71,39 @@ and parse_pre_exp = function
       | If ->
         let t = expect_peek LeftParen t in
         let con, t = parse_exp t 1 in
-        let t = expect_peek RightParen t in
-        let t = expect_peek LeftBrace t in
+        let t = expect_peek RightParen t |> expect_peek LeftBrace in
         let cons, t = parse_statements true t in
-        (* IntegerLiteral 8, t *)
-        IfExpression { con; cons; alt = cons }, t
+        let if_expression, t =
+          match t with
+          | h :: t when h = Else ->
+            let t = expect_peek LeftBrace t in
+            let alt, t = parse_statements true t in
+            IfExpression { con; cons; alt = Some alt }, t
+          | _ -> IfExpression { con; cons; alt = None }, t
+        in
+        if_expression, t
+      | Function ->
+        let t = expect_peek LeftParen t in
+        let rec parse_params lst acc =
+          match lst with
+          | [] -> failwith "Bad param statement"
+          | h :: t ->
+            (match h with
+             | RightParen -> acc, t
+             | Ident str -> parse_params t (Identifier str :: acc)
+             | Comma -> parse_params t acc
+             | _ -> failwith "Bad params")
+        in
+        let params, t = parse_params t [] in
+        let body_lst, t = parse_statements true t in
+        let body =
+          match body_lst with
+          | [ h ] -> h
+          | _ -> failwith "bad body statement"
+        in
+        FunctionLiteral { body; params = Some params }, t
       | tkn ->
-        print_token_list t;
+        print_token_list (tkn :: t);
         failwith ("bad prefix exp - " ^ (tkn |> string_of_token))
     in
     prefix, t
@@ -99,6 +125,7 @@ and parse_exp lst precedence =
     | h :: _ ->
       (match h with
        | Semicolon -> left, t
+       | RightBrace -> left, t
        | tkn when is_infix tkn = false -> left, t
        | infix when prec_of_tkn infix < precedence -> left, t
        | op ->
@@ -112,15 +139,16 @@ and parse_exp_stmt lst =
   let stmt = ExpressionStatement exp in
   stmt, t
 
-and parse_statements block lexer_lst =
+and parse_statements is_block lexer_lst =
   let rec parse_next lst acc =
     match lst with
     | [] -> acc, []
     | h :: t ->
       (match h with
-       | RightBrace when block = true ->
-         let statements, t = parse_statements true t in
-         parse_next t (statements @ acc)
+       | RightBrace when is_block = true -> acc, t
+       | LeftBrace ->
+         let stmts, t = parse_next t acc in
+         BlockStatement (List.rev stmts) :: acc, t
        | Semicolon -> parse_next t acc
        | Let ->
          let stmt, t = parse_let_statement t in
@@ -135,6 +163,26 @@ and parse_statements block lexer_lst =
   parse_next lexer_lst []
 ;;
 
-let test_string = "if (x > 5) { let five = 5 };"
-let program, _ = test_string |> Lexer.tokens_of_string |> parse_statements false
+let parse_program str =
+  let statement_lst, _ = parse_statements false (str |> Lexer.tokens_of_string) in
+  statement_lst
+;;
+
+let test_string =
+  "if (x > 5) \n\
+  \  { let five = 5 } \n\
+  \      else { let six = 6 }; \n\
+  \  let five = 5; \n\
+  \  fn(x, y) \n\
+  \  { let seven = 7 ;\n\
+  \  x + seven\n\
+  \  }"
+;;
+
+let program = test_string |> parse_program |> List.rev;;
+
+print_newline ();;
+print_newline ()
+
 let () = program |> string_of_stmts |> print_endline
+let run_program () = test_string |> Lexer.tokens_of_string |> parse_statements false
