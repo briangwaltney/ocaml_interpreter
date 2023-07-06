@@ -25,34 +25,12 @@ let is_infix = function
   | _ -> false
 ;;
 
-let rec parse_let_statement = function
-  | ident :: assign :: t ->
-    (match assign with
-     | Assign ->
-       (match ident with
-        | Ident name ->
-          let exp_statment_opt, t = parse_exp_stmt t in
-          (match exp_statment_opt with
-           | ExpressionStatement exp -> LetStatement { idt = name; value = exp }, t
-           | _ -> failwith "bad let value")
-        | tkn -> failwith "identity issue")
-     | tkn -> failwith "assign issue")
-  | _ -> failwith "not long enough"
-
-and parse_return lst =
-  match lst with
-  | [] -> ReturnStatement (IntegerLiteral 69), []
-  | h :: t -> ReturnStatement (IntegerLiteral 420), t
-
-and expect_peek tkn lst =
+let rec expect_peek tkn lst =
   match lst with
   | h :: t when h = tkn -> t
-  | _ ->
-    let _ = failwith ("bad " ^ string_of_token tkn ^ " statement") in
-    lst
+  | _ -> failwith ("bad " ^ string_of_token tkn ^ " statement")
 
 and parse_pre_exp = function
-  | [] -> failwith "parsing pre with empty token list"
   | h :: t ->
     let prefix, t =
       match h with
@@ -107,10 +85,24 @@ and parse_pre_exp = function
         failwith ("bad prefix exp - " ^ (tkn |> string_of_token))
     in
     prefix, t
+  | _ -> failwith "parsing pre with empty token list"
 
 and parse_infix left lst =
   match lst with
   | [] -> failwith "bad parse infix"
+  | op_tkn :: t when op_tkn = LeftParen ->
+    let rec gather_args lst acc =
+      match lst with
+      | h :: t when h = RightParen -> List.rev acc, t
+      | h :: t when h = Comma ->
+        let new_arg, t = parse_exp t 1 in
+        gather_args t (new_arg :: acc)
+      | _ ->
+        let new_arg, t = parse_exp t 1 in
+        gather_args t (new_arg :: acc)
+    in
+    let args, t = gather_args t [] in
+    CallExpression { func = left; args }, t
   | op_tkn :: t ->
     let op = string_of_token op_tkn in
     let prec = prec_of_tkn op_tkn in
@@ -126,6 +118,7 @@ and parse_exp lst precedence =
       (match h with
        | Semicolon -> left, t
        | RightBrace -> left, t
+       | Comma -> left, t
        | tkn when is_infix tkn = false -> left, t
        | infix when prec_of_tkn infix < precedence -> left, t
        | op ->
@@ -151,11 +144,18 @@ and parse_statements is_block lexer_lst =
          BlockStatement (List.rev stmts) :: acc, t
        | Semicolon -> parse_next t acc
        | Let ->
-         let stmt, t = parse_let_statement t in
-         parse_next t (stmt :: acc)
+         (match t with
+          | h :: t ->
+            (match h with
+             | Ident idt ->
+               let t = expect_peek Assign t in
+               let exp, t = parse_exp t 1 in
+               parse_next t (LetStatement { idt; value = exp } :: acc)
+             | _ -> failwith "bad name")
+          | _ -> failwith "bad let statement")
        | Return ->
-         let stmt, t = parse_return t in
-         parse_next t (stmt :: acc)
+         let exp, t = parse_exp t 1 in
+         parse_next t (ReturnStatement exp :: acc)
        | _ ->
          let statement, t = parse_exp_stmt (h :: t) in
          parse_next t (statement :: acc))
@@ -168,17 +168,7 @@ let parse_program str =
   statement_lst
 ;;
 
-let test_string =
-  "if (x > 5) \n\
-  \  { let five = 5 } \n\
-  \      else { let six = 6 }; \n\
-  \  let five = 5; \n\
-  \  fn(x, y) \n\
-  \  { let seven = 7 ;\n\
-  \  x + seven\n\
-  \  }"
-;;
-
+let test_string = "let five = 5 + 6; return  6+5"
 let program = test_string |> parse_program |> List.rev;;
 
 print_newline ();;

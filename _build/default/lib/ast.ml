@@ -22,6 +22,10 @@ type expression =
       { params : expression list option
       ; body : statement
       }
+  | CallExpression of
+      { func : expression
+      ; args : expression list
+      }
 
 and statement =
   | LetStatement of
@@ -67,6 +71,8 @@ let rec string_of_exp exp =
             | None -> []))
     ^ ") "
     ^ string_of_stmt body
+  | CallExpression { func; args } ->
+    string_of_exp func ^ "(" ^ String.concat ", " (List.map string_of_exp args) ^ ")"
 
 and string_of_stmts stmts =
   "{\n" ^ String.concat "\n" (List.map string_of_stmt stmts) ^ "\n}"
