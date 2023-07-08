@@ -15,8 +15,8 @@ type expression =
       }
   | IfExpression of
       { con : expression
-      ; cons : statement list
-      ; alt : statement list option
+      ; cons : statement
+      ; alt : statement option
       }
   | FunctionLiteral of
       { params : expression list option
@@ -40,8 +40,6 @@ type node =
   | Statement of statement
   | Expression of expression
 
-type program = statement list
-
 let rec string_of_exp exp =
   match exp with
   | Identifier str -> str
@@ -54,12 +52,12 @@ let rec string_of_exp exp =
     "if ("
     ^ string_of_exp con
     ^ ") "
-    ^ string_of_stmts cons
+    ^ string_of_stmt cons
     ^ " else "
-    ^ string_of_stmts
-        (match alt with
-         | Some alt -> alt
-         | None -> [])
+    ^
+    (match alt with
+     | Some alt -> string_of_stmt alt
+     | None -> "")
   | FunctionLiteral { params; body } ->
     "fn("
     ^ String.concat

@@ -56,8 +56,10 @@ and parse_pre_exp = function
           | h :: t when h = Else ->
             let t = expect_peek LeftBrace t in
             let alt, t = parse_statements true t in
-            IfExpression { con; cons; alt = Some alt }, t
-          | _ -> IfExpression { con; cons; alt = None }, t
+            ( IfExpression
+                { con; cons = BlockStatement cons; alt = Some (BlockStatement alt) }
+            , t )
+          | _ -> IfExpression { con; cons = BlockStatement cons; alt = None }, t
         in
         if_expression, t
       | Function ->
@@ -73,13 +75,8 @@ and parse_pre_exp = function
              | _ -> failwith "Bad params")
         in
         let params, t = parse_params t [] in
-        let body_lst, t = parse_statements true t in
-        let body =
-          match body_lst with
-          | [ h ] -> h
-          | _ -> failwith "bad body statement"
-        in
-        FunctionLiteral { body; params = Some params }, t
+        let body, t = parse_statements true t in
+        FunctionLiteral { body = BlockStatement body; params = Some params }, t
       | tkn ->
         print_token_list (tkn :: t);
         failwith ("bad prefix exp - " ^ (tkn |> string_of_token))
@@ -160,19 +157,11 @@ and parse_statements is_block lexer_lst =
          let statement, t = parse_exp_stmt (h :: t) in
          parse_next t (statement :: acc))
   in
-  parse_next lexer_lst []
+  let program, remaining = parse_next lexer_lst [] in
+  List.rev program, remaining
 ;;
 
 let parse_program str =
   let statement_lst, _ = parse_statements false (str |> Lexer.tokens_of_string) in
-  statement_lst |> List.rev
+  statement_lst
 ;;
-
-(* let test_string = "let five = 5 + 6; return  6+5" *)
-(* let program = test_string |> parse_program ;; *)
-(***)
-(* print_newline ();; *)
-(* print_newline () *)
-(***)
-(* let () = program |> string_of_stmts |> print_endline *)
-(* let run_program () = test_string |> Lexer.tokens_of_string |> parse_statements false *)

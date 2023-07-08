@@ -3,14 +3,17 @@
 (** @canonical Ocaml_int.Ast *)
 module Ast = Ocaml_int__Ast
 
+(** @canonical Ocaml_int.Eval *)
+module Eval = Ocaml_int__Eval
+
 (** @canonical Ocaml_int.Lexer *)
 module Lexer = Ocaml_int__Lexer
+
+(** @canonical Ocaml_int.Object *)
+module Object = Ocaml_int__Object
 
 (** @canonical Ocaml_int.Parser *)
 module Parser = Ocaml_int__Parser
 
 (** @canonical Ocaml_int.Token *)
 module Token = Ocaml_int__Token
-
-(** @canonical Ocaml_int.Vect *)
-module Vect = Ocaml_int__Vect
