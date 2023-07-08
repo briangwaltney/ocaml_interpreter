@@ -66,18 +66,19 @@ let rec eval node acc env =
      | None -> Error "Unable to find variable assignment" :: acc, env
      | Some obj -> obj :: acc, env)
   | FunctionLiteral { params; body } ->
+    let fn_env = env_with_outer env in
     let params =
       match params with
       | Some params -> params
       | None -> []
     in
-    Func { params; body } :: acc, env
+    Func { params; body; env = fn_env } :: acc, env
   | CallExpression { func; args } ->
-    let func, env = eval func [] env in
+    let func, _ = eval func [] env in
     let func, _ = first func in
-    let params, body =
+    let fn_env, params, body =
       match func with
-      | Func { body; params } -> params, body
+      | Func { env; body; params } -> env, params, body
       | _ -> failwith "incorrect function call"
     in
     let rec eval_args args env acc =
@@ -87,7 +88,7 @@ let rec eval node acc env =
         let res, env = eval h [] env in
         eval_args t env (res @ acc)
     in
-    let args, fn_env = eval_args args (new_env ()) [] in
+    let args, fn_env = eval_args args fn_env [] in
     let apply_params_to_env fn_env params args =
       let _ =
         List.mapi
@@ -104,8 +105,10 @@ let rec eval node acc env =
       fn_env
     in
     let fn_env = apply_params_to_env fn_env params args in
-    let res, fn_env = eval_stmt body [] fn_env in
-    res @ acc, env
+    let res, env = eval_stmt body [] fn_env in
+    (match env.outer with
+     | None -> res @ acc, env
+     | Some outer -> res @ acc, outer)
 
 and first = function
   | [ h ] -> h, []
@@ -164,10 +167,5 @@ and eval_program env program =
 let test = "let add = fn(x, y) { x + y }"
 
 let blah =
-  "\n\
-   let newAdder = fn(x) {\n\
-  \  fn(y) { x + y };\n\
-   };\n\n\
-   let addTwo = newAdder(2);\n\
-   addTwo(2);\n"
+  "let newAdder = fn(x) { fn(y) { x + y };}; let addTwo = newAdder(2); addTwo(2);\n"
 ;;
