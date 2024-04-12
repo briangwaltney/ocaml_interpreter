@@ -1,5 +1,3 @@
-open Ast
-
 type obj =
   | Int of int
   | Bool of bool
@@ -45,7 +43,7 @@ and string_of_obj = function
       "Func - Params: "
       ^ string_of_int (List.length params)
       ^ " Body: "
-      ^ Ast.string_of_stmt body
+      ^ (body |> Ast.show_statement)
       ^ " Function env: "
       ^ string_of_env env
     in
@@ -54,11 +52,11 @@ and string_of_obj = function
 and print_obj obj = obj |> string_of_obj |> print_endline
 
 and string_of_env env =
-  let rec aux env =
+  let aux env =
     match env.outer with
     | None -> "END"
     | Some outer ->
-      let str_of_store = Hashtbl.fold (fun k v acc -> acc ^ k ^ " ") env.store "" in
+      let str_of_store = Hashtbl.fold (fun k _ acc -> acc ^ k ^ " ") env.store "" in
       let str = string_of_env outer in
       str_of_store ^ str
   in

@@ -1,5 +1,4 @@
 open Ast
-open Parser
 open Object
 
 let rec eval node acc env =
@@ -8,7 +7,7 @@ let rec eval node acc env =
   | BooleanLiteral boolean -> Bool boolean :: acc, env
   | PrefixExpression { right; op } ->
     (match op with
-     | "!" ->
+     | Token.Bang ->
        let right, env = eval right acc env in
        let right, acc = right |> first in
        (match right with
@@ -17,7 +16,7 @@ let rec eval node acc env =
         | Int _ -> Bool false :: acc, env
         | Null -> Bool true :: acc, env
         | _ -> Error "bad ! prefix exp" :: acc, env)
-     | "-" ->
+     | Token.Minus ->
        let right, env = eval right acc env in
        let right, acc = right |> first in
        (match right with
@@ -32,20 +31,20 @@ let rec eval node acc env =
     (match left, right with
      | Int left, Int right ->
        (match op with
-        | "+" -> Int (left + right) :: acc, env
-        | "-" -> Int (left - right) :: acc, env
-        | "*" -> Int (left * right) :: acc, env
-        | "/" -> Int (left / right) :: acc, env
-        | "<" -> Bool (left < right) :: acc, env
-        | ">" -> Bool (left > right) :: acc, env
-        | "=" -> Bool (left = right) :: acc, env
-        | "!=" -> Bool (left <> right) :: acc, env
-        | str -> Error ("Bad Int infix op " ^ str) :: acc, env)
+        | Token.Plus -> Int (left + right) :: acc, env
+        | Minus -> Int (left - right) :: acc, env
+        | Asterisk -> Int (left * right) :: acc, env
+        | Slash -> Int (left / right) :: acc, env
+        | LessThan -> Bool (left < right) :: acc, env
+        | GreaterThan -> Bool (left > right) :: acc, env
+        | Equal -> Bool (left = right) :: acc, env
+        | NotEqual -> Bool (left <> right) :: acc, env
+        | tkn -> Error ("Bad Int infix op " ^ (tkn |> Token.show)) :: acc, env)
      | Bool left, Bool right ->
        (match op with
-        | "=" -> Bool (left = right) :: acc, env
-        | "!=" -> Bool (left <> right) :: acc, env
-        | str -> Error ("Bad boolean infix op " ^ str) :: acc, env)
+        | Token.Equal -> Bool (left = right) :: acc, env
+        | Token.NotEqual -> Bool (left <> right) :: acc, env
+        | tkn -> Error ("Bad boolean infix op " ^ (tkn |> Token.show)) :: acc, env)
      | _ -> Error "Left and Right of infix are not equal types" :: acc, env)
   | IfExpression { con; cons; alt } ->
     let con, env = eval con acc env in
@@ -137,7 +136,7 @@ and eval_stmt stmt acc env =
     obj_lst @ acc, env
   | LetStatement { idt; value } ->
     let value, env = eval value [] env in
-    let value, rest = value |> first in
+    let value, _ = value |> first in
     (match Hashtbl.mem env.store idt with
      | true -> Hashtbl.replace env.store idt value
      | false -> Hashtbl.add env.store idt value);

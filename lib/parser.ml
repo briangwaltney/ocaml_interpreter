@@ -1,7 +1,8 @@
+open! Base
 open Ast
 open Token
 
-let prec_of_tkn = function
+let rec prec_of_tkn = function
   | Equal | NotEqual -> 2
   | LessThan | GreaterThan -> 3
   | Plus | Minus -> 4
@@ -9,9 +10,8 @@ let prec_of_tkn = function
   | LeftParen -> 6
   | LeftBrace -> 7
   | _ -> 1
-;;
 
-let is_infix = function
+and is_infix = function
   | Equal
   | NotEqual
   | LessThan
@@ -23,22 +23,24 @@ let is_infix = function
   | LeftParen
   | LeftBrace -> true
   | _ -> false
-;;
 
-let rec expect_peek tkn lst =
+and expect_peek tkn lst =
+  let open Base.Poly in
   match lst with
   | h :: t when h = tkn -> t
-  | _ -> failwith ("bad " ^ string_of_token tkn ^ " statement")
+  | _ -> failwith ("bad " ^ (tkn |> Token.show) ^ " statement")
 
-and parse_pre_exp = function
+and parse_pre_exp li =
+  let open Base.Poly in
+  match li with
   | h :: t ->
     let prefix, t =
       match h with
       | Ident str -> Identifier str, t
-      | Integer str -> IntegerLiteral (int_of_string str), t
+      | Integer num -> IntegerLiteral num, t
       | Bang | Minus ->
         let exp, t = parse_pre_exp t in
-        PrefixExpression { op = string_of_token h; right = exp }, t
+        PrefixExpression { op = h; right = exp }, t
       | True -> BooleanLiteral true, t
       | False -> BooleanLiteral false, t
       | LeftParen ->
@@ -78,13 +80,14 @@ and parse_pre_exp = function
         let body, t = parse_statements true t in
         FunctionLiteral { body = BlockStatement body; params = Some params }, t
       | tkn ->
-        print_token_list (tkn :: t);
-        failwith ("bad prefix exp - " ^ (tkn |> string_of_token))
+        tkn :: t |> List.iter ~f:(fun tkn -> tkn |> Token.show |> Stdlib.print_endline);
+        failwith ("bad prefix exp - " ^ (tkn |> Token.show))
     in
     prefix, t
   | _ -> failwith "parsing pre with empty token list"
 
 and parse_infix left lst =
+  let open Base.Poly in
   match lst with
   | [] -> failwith "bad parse infix"
   | op_tkn :: t when op_tkn = LeftParen ->
@@ -100,15 +103,15 @@ and parse_infix left lst =
     in
     let args, t = gather_args t [] in
     CallExpression { func = left; args }, t
-  | op_tkn :: t ->
-    let op = string_of_token op_tkn in
-    let prec = prec_of_tkn op_tkn in
+  | op :: t ->
+    let prec = prec_of_tkn op in
     let right, t = parse_exp t prec in
     InfixExpression { left; op; right }, t
 
 and parse_exp lst precedence =
+  let open Base.Poly in
   let left, t = parse_pre_exp lst in
-  let rec loop t prec left =
+  let rec loop t _ left =
     match t with
     | [] -> left, t
     | h :: _ ->
@@ -130,6 +133,7 @@ and parse_exp_stmt lst =
   stmt, t
 
 and parse_statements is_block lexer_lst =
+  let open Base.Poly in
   let rec parse_next lst acc =
     match lst with
     | [] -> acc, []
@@ -159,9 +163,8 @@ and parse_statements is_block lexer_lst =
   in
   let program, remaining = parse_next lexer_lst [] in
   List.rev program, remaining
-;;
 
-let parse_program str =
+and parse_program str =
   let statement_lst, _ = parse_statements false (str |> Lexer.tokens_of_string) in
   statement_lst
 ;;

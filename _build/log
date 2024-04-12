@@ -1,124 +1,633 @@
-# dune exec repl
+# dune runtest -w
 # OCAMLPARAM: unset
 # Shared cache: disabled
+# Shared cache location: /Users/briangwaltney/.cache/dune/db
 # Workspace root: /Users/briangwaltney/Programming/ocaml_int
 # Auto-detected concurrency: 10
-$ /Users/briangwaltney/.opam/default/bin/ocamlc.opt -config > /var/folders/5_/57cjyjvd527_6303r_nftkwc0000gn/T/dune_798afc_output
 # Dune context:
 #  { name = "default"
 #  ; kind = "default"
 #  ; profile = Dev
 #  ; merlin = true
-#  ; for_host = None
 #  ; fdo_target_exe = None
 #  ; build_dir = In_build_dir "default"
-#  ; ocaml_bin = External "/Users/briangwaltney/.opam/default/bin"
-#  ; ocaml = Ok External "/Users/briangwaltney/.opam/default/bin/ocaml"
-#  ; ocamlc = External "/Users/briangwaltney/.opam/default/bin/ocamlc.opt"
-#  ; ocamlopt =
-#      Ok External "/Users/briangwaltney/.opam/default/bin/ocamlopt.opt"
-#  ; ocamldep =
-#      Ok External "/Users/briangwaltney/.opam/default/bin/ocamldep.opt"
-#  ; ocamlmklib =
-#      Ok External "/Users/briangwaltney/.opam/default/bin/ocamlmklib.opt"
-#  ; env =
-#      map
-#        { "DUNE_OCAML_HARDCODED" :
-#            "/Users/briangwaltney/.opam/default/lib/ocaml:/Users/briangwaltney/.opam/default/lib"
-#        ; "DUNE_OCAML_STDLIB" : "/Users/briangwaltney/.opam/default/lib/ocaml"
-#        ; "DUNE_SOURCEROOT" : "/Users/briangwaltney/Programming/ocaml_int"
-#        ; "INSIDE_DUNE" :
-#            "/Users/briangwaltney/Programming/ocaml_int/_build/default"
-#        ; "OCAMLFIND_IGNORE_DUPS_IN" :
-#            "/Users/briangwaltney/Programming/ocaml_int/_build/install/default/lib"
-#        ; "OCAMLPATH" :
-#            "/Users/briangwaltney/Programming/ocaml_int/_build/install/default/lib"
-#        ; "OCAMLTOP_INCLUDE_PATH" :
-#            "/Users/briangwaltney/Programming/ocaml_int/_build/install/default/lib/toplevel"
-#        ; "OCAML_COLOR" : "always"
-#        ; "OPAMCOLOR" : "always"
-#        }
-#  ; findlib_paths =
-#      [ External "/Users/briangwaltney/.opam/default/lib/ocaml"
-#      ; External "/Users/briangwaltney/.opam/default/lib"
-#      ]
-#  ; natdynlink_supported = true
-#  ; supports_shared_libraries = true
-#  ; ocaml_config =
-#      { version = "5.0.0"
-#      ; standard_library_default =
-#          "/Users/briangwaltney/.opam/default/lib/ocaml"
-#      ; standard_library = "/Users/briangwaltney/.opam/default/lib/ocaml"
-#      ; standard_runtime = "the_standard_runtime_variable_was_deleted"
-#      ; ccomp_type = "cc"
-#      ; c_compiler = "cc"
-#      ; ocamlc_cflags =
-#          [ "-O2"; "-fno-strict-aliasing"; "-fwrapv"; "-pthread" ]
-#      ; ocamlc_cppflags = [ "-D_FILE_OFFSET_BITS=64" ]
-#      ; ocamlopt_cflags =
-#          [ "-O2"; "-fno-strict-aliasing"; "-fwrapv"; "-pthread" ]
-#      ; ocamlopt_cppflags = [ "-D_FILE_OFFSET_BITS=64" ]
-#      ; bytecomp_c_compiler =
-#          [ "cc"
-#          ; "-O2"
-#          ; "-fno-strict-aliasing"
-#          ; "-fwrapv"
-#          ; "-pthread"
-#          ; "-D_FILE_OFFSET_BITS=64"
-#          ]
-#      ; bytecomp_c_libraries = [ "-lm"; "-lpthread" ]
-#      ; native_c_compiler =
-#          [ "cc"
-#          ; "-O2"
-#          ; "-fno-strict-aliasing"
-#          ; "-fwrapv"
-#          ; "-pthread"
-#          ; "-D_FILE_OFFSET_BITS=64"
-#          ]
-#      ; native_c_libraries = [ "-lm"; "-lpthread" ]
-#      ; native_pack_linker = [ "ld"; "-r"; "-o" ]
-#      ; cc_profile = []
-#      ; architecture = "arm64"
-#      ; model = "default"
-#      ; int_size = 63
-#      ; word_size = 64
-#      ; system = "macosx"
-#      ; asm = [ "cc"; "-c"; "-Wno-trigraphs" ]
-#      ; asm_cfi_supported = true
-#      ; with_frame_pointers = false
-#      ; ext_exe = ""
-#      ; ext_obj = ".o"
-#      ; ext_asm = ".s"
-#      ; ext_lib = ".a"
-#      ; ext_dll = ".so"
-#      ; os_type = "Unix"
-#      ; default_executable_name = "a.out"
-#      ; systhread_supported = true
-#      ; host = "aarch64-apple-darwin22.5.0"
-#      ; target = "aarch64-apple-darwin22.5.0"
-#      ; profiling = false
-#      ; flambda = false
-#      ; spacetime = false
-#      ; safe_string = true
-#      ; exec_magic_number = "Caml1999X032"
-#      ; cmi_magic_number = "Caml1999I032"
-#      ; cmo_magic_number = "Caml1999O032"
-#      ; cma_magic_number = "Caml1999A032"
-#      ; cmx_magic_number = "Caml1999Y032"
-#      ; cmxa_magic_number = "Caml1999Z032"
-#      ; ast_impl_magic_number = "Caml1999M032"
-#      ; ast_intf_magic_number = "Caml1999N032"
-#      ; cmxs_magic_number = "Caml1999D032"
-#      ; cmt_magic_number = "Caml1999T032"
-#      ; natdynlink_supported = true
-#      ; supports_shared_libraries = true
-#      ; windows_unicode = false
-#      }
+#  ; instrument_with = []
 #  }
-$ (cd _build/default && /Users/briangwaltney/.opam/default/bin/ocamldep.opt -modules -impl lib/eval.ml) > _build/default/lib/.ocaml_int.objs/ocaml_int__Eval.impl.d
-$ (cd _build/default && /Users/briangwaltney/.opam/default/bin/ocamlc.opt -w -26 -g -bin-annot -I lib/.ocaml_int.objs/byte -I /Users/briangwaltney/.opam/default/lib/base -I /Users/briangwaltney/.opam/default/lib/base/base_internalhash_types -I /Users/briangwaltney/.opam/default/lib/base/caml -I /Users/briangwaltney/.opam/default/lib/base/shadow_stdlib -I /Users/briangwaltney/.opam/default/lib/sexplib0 -no-alias-deps -opaque -open Ocaml_int -o lib/.ocaml_int.objs/byte/ocaml_int__Eval.cmo -c -impl lib/eval.ml)
-$ (cd _build/default && /Users/briangwaltney/.opam/default/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I bin/.main.eobjs/byte -I /Users/briangwaltney/.opam/default/lib/base -I /Users/briangwaltney/.opam/default/lib/base/base_internalhash_types -I /Users/briangwaltney/.opam/default/lib/base/caml -I /Users/briangwaltney/.opam/default/lib/base/shadow_stdlib -I /Users/briangwaltney/.opam/default/lib/sexplib0 -I lib/.ocaml_int.objs/byte -no-alias-deps -opaque -open Dune__exe -o bin/.main.eobjs/byte/dune__exe__Repl.cmi -c -intf bin/repl.mli)
-$ (cd _build/default && /Users/briangwaltney/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I /Users/briangwaltney/.opam/default/lib/base -I /Users/briangwaltney/.opam/default/lib/base/base_internalhash_types -I /Users/briangwaltney/.opam/default/lib/base/caml -I /Users/briangwaltney/.opam/default/lib/base/shadow_stdlib -I /Users/briangwaltney/.opam/default/lib/sexplib0 -I lib/.ocaml_int.objs/byte -I lib/.ocaml_int.objs/native -intf-suffix .ml -no-alias-deps -opaque -open Dune__exe -o bin/.main.eobjs/native/dune__exe__Repl.cmx -c -impl bin/repl.ml)
-$ (cd _build/default && /Users/briangwaltney/.opam/default/bin/ocamlopt.opt -w -26 -g -I lib/.ocaml_int.objs/byte -I lib/.ocaml_int.objs/native -I /Users/briangwaltney/.opam/default/lib/base -I /Users/briangwaltney/.opam/default/lib/base/base_internalhash_types -I /Users/briangwaltney/.opam/default/lib/base/caml -I /Users/briangwaltney/.opam/default/lib/base/shadow_stdlib -I /Users/briangwaltney/.opam/default/lib/sexplib0 -intf-suffix .ml -no-alias-deps -opaque -open Ocaml_int -o lib/.ocaml_int.objs/native/ocaml_int__Eval.cmx -c -impl lib/eval.ml)
-$ (cd _build/default && /Users/briangwaltney/.opam/default/bin/ocamlopt.opt -w -26 -g -a -o lib/ocaml_int.cmxa lib/.ocaml_int.objs/native/ocaml_int.cmx lib/.ocaml_int.objs/native/ocaml_int__Token.cmx lib/.ocaml_int.objs/native/ocaml_int__Ast.cmx lib/.ocaml_int.objs/native/ocaml_int__Lexer.cmx lib/.ocaml_int.objs/native/ocaml_int__Parser.cmx lib/.ocaml_int.objs/native/ocaml_int__Object.cmx lib/.ocaml_int.objs/native/ocaml_int__Eval.cmx)
-$ (cd _build/default && /Users/briangwaltney/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -o bin/repl.exe /Users/briangwaltney/.opam/default/lib/base/base_internalhash_types/base_internalhash_types.cmxa -I /Users/briangwaltney/.opam/default/lib/base/base_internalhash_types /Users/briangwaltney/.opam/default/lib/base/caml/caml.cmxa /Users/briangwaltney/.opam/default/lib/sexplib0/sexplib0.cmxa /Users/briangwaltney/.opam/default/lib/base/shadow_stdlib/shadow_stdlib.cmxa /Users/briangwaltney/.opam/default/lib/base/base.cmxa -I /Users/briangwaltney/.opam/default/lib/base lib/ocaml_int.cmxa bin/.main.eobjs/native/dune__exe.cmx bin/.main.eobjs/native/dune__exe__Repl.cmx)
+$ /Users/briangwaltney/.opam/latest/bin/ocamlc.opt -config > /var/folders/5_/57cjyjvd527_6303r_nftkwc0000gn/T/dune_52dbdc_output
+$ (cd _build/default/test && ./ocaml_int.exe)
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamldep.opt -modules -impl lib/token.ml) > _build/default/lib/.ocaml_int.objs/ocaml_int__Token.impl.d
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamlc.opt -w -26 -g -bin-annot -I lib/.ocaml_int.objs/byte -I /Users/briangwaltney/.opam/latest/lib/base -I /Users/briangwaltney/.opam/latest/lib/base/base_internalhash_types -I /Users/briangwaltney/.opam/latest/lib/base/caml -I /Users/briangwaltney/.opam/latest/lib/base/shadow_stdlib -I /Users/briangwaltney/.opam/latest/lib/sexplib0 -no-alias-deps -opaque -open Ocaml_int -o lib/.ocaml_int.objs/byte/ocaml_int__Token.cmo -c -impl lib/token.ml)
+> File "lib/token.ml", line 44, characters 30-31:
+> 44 |   | Integer a -> "Integer " ^ a
+>                                    ^
+> Error: This expression has type int but an expression was expected of type
+>          string
+[2]
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamlc.opt -g -w -24 -I .ppx/f607123e025979099a41764a2c1520a1 -I /Users/briangwaltney/.opam/latest/lib/base -I /Users/briangwaltney/.opam/latest/lib/base/base_internalhash_types -I /Users/briangwaltney/.opam/latest/lib/base/caml -I /Users/briangwaltney/.opam/latest/lib/base/shadow_stdlib -I /Users/briangwaltney/.opam/latest/lib/ocaml-compiler-libs/common -I /Users/briangwaltney/.opam/latest/lib/ocaml-compiler-libs/shadow -I /Users/briangwaltney/.opam/latest/lib/ocaml/compiler-libs -I /Users/briangwaltney/.opam/latest/lib/ppx_compare -I /Users/briangwaltney/.opam/latest/lib/ppx_compare/expander -I /Users/briangwaltney/.opam/latest/lib/ppx_derivers -I /Users/briangwaltney/.opam/latest/lib/ppx_deriving/api -I /Users/briangwaltney/.opam/latest/lib/ppx_deriving/show -I /Users/briangwaltney/.opam/latest/lib/ppxlib -I /Users/briangwaltney/.opam/latest/lib/ppxlib/ast -I /Users/briangwaltney/.opam/latest/lib/ppxlib/astlib -I /Users/briangwaltney/.opam/latest/lib/ppxlib/print_diff -I /Users/briangwaltney/.opam/latest/lib/ppxlib/stdppx -I /Users/briangwaltney/.opam/latest/lib/ppxlib/traverse_builtins -I /Users/briangwaltney/.opam/latest/lib/result -I /Users/briangwaltney/.opam/latest/lib/sexplib0 -I /Users/briangwaltney/.opam/latest/lib/stdlib-shims -no-alias-deps -o .ppx/f607123e025979099a41764a2c1520a1/dune__exe___ppx.cmo -c -impl .ppx/f607123e025979099a41764a2c1520a1/_ppx.ml-gen)
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamlopt.opt -g -w -24 -I .ppx/f607123e025979099a41764a2c1520a1 -I /Users/briangwaltney/.opam/latest/lib/base -I /Users/briangwaltney/.opam/latest/lib/base/base_internalhash_types -I /Users/briangwaltney/.opam/latest/lib/base/caml -I /Users/briangwaltney/.opam/latest/lib/base/shadow_stdlib -I /Users/briangwaltney/.opam/latest/lib/ocaml-compiler-libs/common -I /Users/briangwaltney/.opam/latest/lib/ocaml-compiler-libs/shadow -I /Users/briangwaltney/.opam/latest/lib/ocaml/compiler-libs -I /Users/briangwaltney/.opam/latest/lib/ppx_compare -I /Users/briangwaltney/.opam/latest/lib/ppx_compare/expander -I /Users/briangwaltney/.opam/latest/lib/ppx_derivers -I /Users/briangwaltney/.opam/latest/lib/ppx_deriving/api -I /Users/briangwaltney/.opam/latest/lib/ppx_deriving/show -I /Users/briangwaltney/.opam/latest/lib/ppxlib -I /Users/briangwaltney/.opam/latest/lib/ppxlib/ast -I /Users/briangwaltney/.opam/latest/lib/ppxlib/astlib -I /Users/briangwaltney/.opam/latest/lib/ppxlib/print_diff -I /Users/briangwaltney/.opam/latest/lib/ppxlib/stdppx -I /Users/briangwaltney/.opam/latest/lib/ppxlib/traverse_builtins -I /Users/briangwaltney/.opam/latest/lib/result -I /Users/briangwaltney/.opam/latest/lib/sexplib0 -I /Users/briangwaltney/.opam/latest/lib/stdlib-shims -intf-suffix .ml-gen -no-alias-deps -o .ppx/f607123e025979099a41764a2c1520a1/dune__exe___ppx.cmx -c -impl .ppx/f607123e025979099a41764a2c1520a1/_ppx.ml-gen)
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamlopt.opt -g -w -24 -o .ppx/f607123e025979099a41764a2c1520a1/ppx.exe /Users/briangwaltney/.opam/latest/lib/base/base_internalhash_types/base_internalhash_types.cmxa -I /Users/briangwaltney/.opam/latest/lib/base/base_internalhash_types /Users/briangwaltney/.opam/latest/lib/base/caml/caml.cmxa /Users/briangwaltney/.opam/latest/lib/sexplib0/sexplib0.cmxa /Users/briangwaltney/.opam/latest/lib/base/shadow_stdlib/shadow_stdlib.cmxa /Users/briangwaltney/.opam/latest/lib/base/base.cmxa -I /Users/briangwaltney/.opam/latest/lib/base /Users/briangwaltney/.opam/latest/lib/ocaml/compiler-libs/ocamlcommon.cmxa /Users/briangwaltney/.opam/latest/lib/ocaml-compiler-libs/common/ocaml_common.cmxa /Users/briangwaltney/.opam/latest/lib/ppxlib/astlib/astlib.cmxa /Users/briangwaltney/.opam/latest/lib/stdlib-shims/stdlib_shims.cmxa /Users/briangwaltney/.opam/latest/lib/ppxlib/ast/ppxlib_ast.cmxa /Users/briangwaltney/.opam/latest/lib/ocaml-compiler-libs/shadow/ocaml_shadow.cmxa /Users/briangwaltney/.opam/latest/lib/ppxlib/print_diff/ppxlib_print_diff.cmxa /Users/briangwaltney/.opam/latest/lib/ppx_derivers/ppx_derivers.cmxa /Users/briangwaltney/.opam/latest/lib/ppxlib/traverse_builtins/ppxlib_traverse_builtins.cmxa /Users/briangwaltney/.opam/latest/lib/ppxlib/stdppx/stdppx.cmxa /Users/briangwaltney/.opam/latest/lib/ppxlib/ppxlib.cmxa /Users/briangwaltney/.opam/latest/lib/ppx_compare/expander/ppx_compare_expander.cmxa /Users/briangwaltney/.opam/latest/lib/ppx_compare/ppx_compare.cmxa /Users/briangwaltney/.opam/latest/lib/result/result.cmxa /Users/briangwaltney/.opam/latest/lib/ppx_deriving/api/ppx_deriving_api.cmxa /Users/briangwaltney/.opam/latest/lib/ppx_deriving/show/ppx_deriving_show.cmxa .ppx/f607123e025979099a41764a2c1520a1/dune__exe___ppx.cmx)
+$ (cd _build/.sandbox/e80298f4c343632247a9f6928c4458d7/default && .ppx/f607123e025979099a41764a2c1520a1/ppx.exe --cookie 'library-name="ocaml_int"' -o lib/ast.pp.ml --impl lib/ast.ml -corrected-suffix .ppx-corrected -diff-cmd - -dump-ast)
+$ (cd _build/.sandbox/add446a115086cadbe2185497e14b459/default && .ppx/f607123e025979099a41764a2c1520a1/ppx.exe --cookie 'library-name="ocaml_int"' -o lib/token.pp.ml --impl lib/token.ml -corrected-suffix .ppx-corrected -diff-cmd - -dump-ast)
+$ (cd _build/.sandbox/81cbf585929cf3b100175b6855b29ff1/default && .ppx/f607123e025979099a41764a2c1520a1/ppx.exe --cookie 'library-name="ocaml_int"' -o lib/lexer.pp.ml --impl lib/lexer.ml -corrected-suffix .ppx-corrected -diff-cmd - -dump-ast)
+$ (cd _build/.sandbox/84a80f0fec38ca745e773df882fea29e/default && .ppx/f607123e025979099a41764a2c1520a1/ppx.exe --cookie 'library-name="ocaml_int"' -o lib/object.pp.ml --impl lib/object.ml -corrected-suffix .ppx-corrected -diff-cmd - -dump-ast)
+$ (cd _build/.sandbox/63666d20ac22eeb24ed34b2a748e9cfb/default && .ppx/f607123e025979099a41764a2c1520a1/ppx.exe --cookie 'library-name="ocaml_int"' -o lib/parser.pp.ml --impl lib/parser.ml -corrected-suffix .ppx-corrected -diff-cmd - -dump-ast)
+$ (cd _build/.sandbox/59eb6f0a5adea80b851bdbc20e9ee456/default && .ppx/f607123e025979099a41764a2c1520a1/ppx.exe --cookie 'library-name="ocaml_int"' -o lib/eval.pp.ml --impl lib/eval.ml -corrected-suffix .ppx-corrected -diff-cmd - -dump-ast)
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamldep.opt -modules -impl lib/token.pp.ml) > _build/default/lib/.ocaml_int.objs/ocaml_int__Token.impl.d
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamldep.opt -modules -impl lib/ast.pp.ml) > _build/default/lib/.ocaml_int.objs/ocaml_int__Ast.impl.d
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamldep.opt -modules -impl lib/lexer.pp.ml) > _build/default/lib/.ocaml_int.objs/ocaml_int__Lexer.impl.d
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamldep.opt -modules -impl lib/object.pp.ml) > _build/default/lib/.ocaml_int.objs/ocaml_int__Object.impl.d
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamldep.opt -modules -impl lib/parser.pp.ml) > _build/default/lib/.ocaml_int.objs/ocaml_int__Parser.impl.d
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamldep.opt -modules -impl lib/eval.pp.ml) > _build/default/lib/.ocaml_int.objs/ocaml_int__Eval.impl.d
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I lib/.ocaml_int.objs/byte -I /Users/briangwaltney/.opam/latest/lib/base -I /Users/briangwaltney/.opam/latest/lib/base/base_internalhash_types -I /Users/briangwaltney/.opam/latest/lib/base/caml -I /Users/briangwaltney/.opam/latest/lib/base/shadow_stdlib -I /Users/briangwaltney/.opam/latest/lib/ppx_compare/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/ppx_deriving/runtime -I /Users/briangwaltney/.opam/latest/lib/result -I /Users/briangwaltney/.opam/latest/lib/sexplib0 -no-alias-deps -opaque -open Ocaml_int -o lib/.ocaml_int.objs/byte/ocaml_int__Token.cmo -c -impl lib/token.pp.ml)
+> File "lib/token.ml", line 44, characters 30-31:
+> 44 |   | Integer a -> "Integer " ^ a
+>                                    ^
+> Error: This expression has type int but an expression was expected of type
+>          string
+[2]
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I lib/.ocaml_int.objs/byte -I /Users/briangwaltney/.opam/latest/lib/base -I /Users/briangwaltney/.opam/latest/lib/base/base_internalhash_types -I /Users/briangwaltney/.opam/latest/lib/base/caml -I /Users/briangwaltney/.opam/latest/lib/base/shadow_stdlib -I /Users/briangwaltney/.opam/latest/lib/ppx_compare/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/ppx_deriving/runtime -I /Users/briangwaltney/.opam/latest/lib/result -I /Users/briangwaltney/.opam/latest/lib/sexplib0 -no-alias-deps -opaque -open Ocaml_int -o lib/.ocaml_int.objs/byte/ocaml_int__Token.cmo -c -impl lib/token.pp.ml)
+> File "lib/token.ml", line 44, characters 30-31:
+> 44 |   | Integer a -> "Integer " ^ a
+>                                    ^
+> Error: This expression has type int but an expression was expected of type
+>          string
+[2]
+$ (cd _build/.sandbox/ac211ec39c5a0561688dc3e116fdf7de/default && .ppx/f607123e025979099a41764a2c1520a1/ppx.exe --cookie 'library-name="ocaml_int"' -o lib/token.pp.ml --impl lib/token.ml -corrected-suffix .ppx-corrected -diff-cmd - -dump-ast)
+> File "lib/token.ml", line 28, characters 27-31:
+> 28 | [@@deriving show, compare, sexp]
+>                                 ^^^^
+> Error: Cannot locate deriver sexp
+[1]
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamlc.opt -g -w -24 -I .ppx/471203fdee24cbf364232811313833fe -I /Users/briangwaltney/.opam/latest/lib/base -I /Users/briangwaltney/.opam/latest/lib/base/base_internalhash_types -I /Users/briangwaltney/.opam/latest/lib/base/caml -I /Users/briangwaltney/.opam/latest/lib/base/shadow_stdlib -I /Users/briangwaltney/.opam/latest/lib/ocaml-compiler-libs/common -I /Users/briangwaltney/.opam/latest/lib/ocaml-compiler-libs/shadow -I /Users/briangwaltney/.opam/latest/lib/ocaml/compiler-libs -I /Users/briangwaltney/.opam/latest/lib/ppx_compare -I /Users/briangwaltney/.opam/latest/lib/ppx_compare/expander -I /Users/briangwaltney/.opam/latest/lib/ppx_derivers -I /Users/briangwaltney/.opam/latest/lib/ppx_deriving/api -I /Users/briangwaltney/.opam/latest/lib/ppx_deriving/show -I /Users/briangwaltney/.opam/latest/lib/ppx_sexp_conv -I /Users/briangwaltney/.opam/latest/lib/ppx_sexp_conv/expander -I /Users/briangwaltney/.opam/latest/lib/ppxlib -I /Users/briangwaltney/.opam/latest/lib/ppxlib/ast -I /Users/briangwaltney/.opam/latest/lib/ppxlib/astlib -I /Users/briangwaltney/.opam/latest/lib/ppxlib/metaquot_lifters -I /Users/briangwaltney/.opam/latest/lib/ppxlib/print_diff -I /Users/briangwaltney/.opam/latest/lib/ppxlib/stdppx -I /Users/briangwaltney/.opam/latest/lib/ppxlib/traverse_builtins -I /Users/briangwaltney/.opam/latest/lib/result -I /Users/briangwaltney/.opam/latest/lib/sexplib0 -I /Users/briangwaltney/.opam/latest/lib/stdlib-shims -no-alias-deps -o .ppx/471203fdee24cbf364232811313833fe/dune__exe___ppx.cmo -c -impl .ppx/471203fdee24cbf364232811313833fe/_ppx.ml-gen)
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamlopt.opt -g -w -24 -I .ppx/471203fdee24cbf364232811313833fe -I /Users/briangwaltney/.opam/latest/lib/base -I /Users/briangwaltney/.opam/latest/lib/base/base_internalhash_types -I /Users/briangwaltney/.opam/latest/lib/base/caml -I /Users/briangwaltney/.opam/latest/lib/base/shadow_stdlib -I /Users/briangwaltney/.opam/latest/lib/ocaml-compiler-libs/common -I /Users/briangwaltney/.opam/latest/lib/ocaml-compiler-libs/shadow -I /Users/briangwaltney/.opam/latest/lib/ocaml/compiler-libs -I /Users/briangwaltney/.opam/latest/lib/ppx_compare -I /Users/briangwaltney/.opam/latest/lib/ppx_compare/expander -I /Users/briangwaltney/.opam/latest/lib/ppx_derivers -I /Users/briangwaltney/.opam/latest/lib/ppx_deriving/api -I /Users/briangwaltney/.opam/latest/lib/ppx_deriving/show -I /Users/briangwaltney/.opam/latest/lib/ppx_sexp_conv -I /Users/briangwaltney/.opam/latest/lib/ppx_sexp_conv/expander -I /Users/briangwaltney/.opam/latest/lib/ppxlib -I /Users/briangwaltney/.opam/latest/lib/ppxlib/ast -I /Users/briangwaltney/.opam/latest/lib/ppxlib/astlib -I /Users/briangwaltney/.opam/latest/lib/ppxlib/metaquot_lifters -I /Users/briangwaltney/.opam/latest/lib/ppxlib/print_diff -I /Users/briangwaltney/.opam/latest/lib/ppxlib/stdppx -I /Users/briangwaltney/.opam/latest/lib/ppxlib/traverse_builtins -I /Users/briangwaltney/.opam/latest/lib/result -I /Users/briangwaltney/.opam/latest/lib/sexplib0 -I /Users/briangwaltney/.opam/latest/lib/stdlib-shims -intf-suffix .ml-gen -no-alias-deps -o .ppx/471203fdee24cbf364232811313833fe/dune__exe___ppx.cmx -c -impl .ppx/471203fdee24cbf364232811313833fe/_ppx.ml-gen)
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamlopt.opt -g -w -24 -o .ppx/471203fdee24cbf364232811313833fe/ppx.exe /Users/briangwaltney/.opam/latest/lib/base/base_internalhash_types/base_internalhash_types.cmxa -I /Users/briangwaltney/.opam/latest/lib/base/base_internalhash_types /Users/briangwaltney/.opam/latest/lib/base/caml/caml.cmxa /Users/briangwaltney/.opam/latest/lib/sexplib0/sexplib0.cmxa /Users/briangwaltney/.opam/latest/lib/base/shadow_stdlib/shadow_stdlib.cmxa /Users/briangwaltney/.opam/latest/lib/base/base.cmxa -I /Users/briangwaltney/.opam/latest/lib/base /Users/briangwaltney/.opam/latest/lib/ocaml/compiler-libs/ocamlcommon.cmxa /Users/briangwaltney/.opam/latest/lib/ocaml-compiler-libs/common/ocaml_common.cmxa /Users/briangwaltney/.opam/latest/lib/ppxlib/astlib/astlib.cmxa /Users/briangwaltney/.opam/latest/lib/stdlib-shims/stdlib_shims.cmxa /Users/briangwaltney/.opam/latest/lib/ppxlib/ast/ppxlib_ast.cmxa /Users/briangwaltney/.opam/latest/lib/ocaml-compiler-libs/shadow/ocaml_shadow.cmxa /Users/briangwaltney/.opam/latest/lib/ppxlib/print_diff/ppxlib_print_diff.cmxa /Users/briangwaltney/.opam/latest/lib/ppx_derivers/ppx_derivers.cmxa /Users/briangwaltney/.opam/latest/lib/ppxlib/traverse_builtins/ppxlib_traverse_builtins.cmxa /Users/briangwaltney/.opam/latest/lib/ppxlib/stdppx/stdppx.cmxa /Users/briangwaltney/.opam/latest/lib/ppxlib/ppxlib.cmxa /Users/briangwaltney/.opam/latest/lib/ppx_compare/expander/ppx_compare_expander.cmxa /Users/briangwaltney/.opam/latest/lib/ppx_compare/ppx_compare.cmxa /Users/briangwaltney/.opam/latest/lib/result/result.cmxa /Users/briangwaltney/.opam/latest/lib/ppx_deriving/api/ppx_deriving_api.cmxa /Users/briangwaltney/.opam/latest/lib/ppx_deriving/show/ppx_deriving_show.cmxa /Users/briangwaltney/.opam/latest/lib/ppxlib/metaquot_lifters/ppxlib_metaquot_lifters.cmxa /Users/briangwaltney/.opam/latest/lib/ppx_sexp_conv/expander/ppx_sexp_conv_expander.cmxa /Users/briangwaltney/.opam/latest/lib/ppx_sexp_conv/ppx_sexp_conv.cmxa .ppx/471203fdee24cbf364232811313833fe/dune__exe___ppx.cmx)
+$ (cd _build/.sandbox/65a6741e19d67b877a7b1e6f64d5946d/default && .ppx/471203fdee24cbf364232811313833fe/ppx.exe --cookie 'library-name="ocaml_int"' -o lib/lexer.pp.ml --impl lib/lexer.ml -corrected-suffix .ppx-corrected -diff-cmd - -dump-ast)
+$ (cd _build/.sandbox/0f0834533216d029431859d448673637/default && .ppx/471203fdee24cbf364232811313833fe/ppx.exe --cookie 'library-name="ocaml_int"' -o lib/ast.pp.ml --impl lib/ast.ml -corrected-suffix .ppx-corrected -diff-cmd - -dump-ast)
+$ (cd _build/.sandbox/7f90a908bd0438529b18708dfa05a230/default && .ppx/471203fdee24cbf364232811313833fe/ppx.exe --cookie 'library-name="ocaml_int"' -o lib/object.pp.ml --impl lib/object.ml -corrected-suffix .ppx-corrected -diff-cmd - -dump-ast)
+$ (cd _build/.sandbox/3696b692bd22754afe37e2382d79a813/default && .ppx/471203fdee24cbf364232811313833fe/ppx.exe --cookie 'library-name="ocaml_int"' -o lib/parser.pp.ml --impl lib/parser.ml -corrected-suffix .ppx-corrected -diff-cmd - -dump-ast)
+$ (cd _build/.sandbox/35bb7f50a10ed1cb71029981342a86e7/default && .ppx/471203fdee24cbf364232811313833fe/ppx.exe --cookie 'library-name="ocaml_int"' -o lib/eval.pp.ml --impl lib/eval.ml -corrected-suffix .ppx-corrected -diff-cmd - -dump-ast)
+$ (cd _build/.sandbox/e8342691f24520356b961957c1479d05/default && .ppx/471203fdee24cbf364232811313833fe/ppx.exe --cookie 'library-name="ocaml_int"' -o lib/token.pp.ml --impl lib/token.ml -corrected-suffix .ppx-corrected -diff-cmd - -dump-ast)
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamldep.opt -modules -impl lib/token.pp.ml) > _build/default/lib/.ocaml_int.objs/ocaml_int__Token.impl.d
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I lib/.ocaml_int.objs/byte -I /Users/briangwaltney/.opam/latest/lib/base -I /Users/briangwaltney/.opam/latest/lib/base/base_internalhash_types -I /Users/briangwaltney/.opam/latest/lib/base/caml -I /Users/briangwaltney/.opam/latest/lib/base/shadow_stdlib -I /Users/briangwaltney/.opam/latest/lib/ppx_compare/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/ppx_deriving/runtime -I /Users/briangwaltney/.opam/latest/lib/ppx_sexp_conv/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/result -I /Users/briangwaltney/.opam/latest/lib/sexplib0 -no-alias-deps -opaque -open Ocaml_int -o lib/.ocaml_int.objs/byte/ocaml_int__Token.cmo -c -impl lib/token.pp.ml)
+> File "lib/token.ml", line 3, characters 13-19:
+> 3 |   | Ident of string
+>                  ^^^^^^
+> Error: Unbound value compare_string
+[2]
+$ (cd _build/.sandbox/5a3ad74f22210f9a157cd5da80feaa78/default && .ppx/471203fdee24cbf364232811313833fe/ppx.exe --cookie 'library-name="ocaml_int"' -o lib/token.pp.ml --impl lib/token.ml -corrected-suffix .ppx-corrected -diff-cmd - -dump-ast)
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamldep.opt -modules -impl lib/token.pp.ml) > _build/default/lib/.ocaml_int.objs/ocaml_int__Token.impl.d
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I lib/.ocaml_int.objs/byte -I /Users/briangwaltney/.opam/latest/lib/base -I /Users/briangwaltney/.opam/latest/lib/base/base_internalhash_types -I /Users/briangwaltney/.opam/latest/lib/base/caml -I /Users/briangwaltney/.opam/latest/lib/base/shadow_stdlib -I /Users/briangwaltney/.opam/latest/lib/ppx_compare/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/ppx_deriving/runtime -I /Users/briangwaltney/.opam/latest/lib/ppx_sexp_conv/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/result -I /Users/briangwaltney/.opam/latest/lib/sexplib0 -no-alias-deps -opaque -open Ocaml_int -o lib/.ocaml_int.objs/byte/ocaml_int__Token.cmo -c -impl lib/token.pp.ml)
+> File "lib/token.ml", line 3, characters 13-19:
+> 3 |   | Ident of string
+>                  ^^^^^^
+> Error: Unbound value compare_string
+[2]
+$ (cd _build/.sandbox/1250cb0d66bfeb04f869427ba5302cb2/default && .ppx/471203fdee24cbf364232811313833fe/ppx.exe --cookie 'library-name="ocaml_int"' -o lib/token.pp.ml --impl lib/token.ml -corrected-suffix .ppx-corrected -diff-cmd - -dump-ast)
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamldep.opt -modules -impl lib/token.pp.ml) > _build/default/lib/.ocaml_int.objs/ocaml_int__Token.impl.d
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I lib/.ocaml_int.objs/byte -I /Users/briangwaltney/.opam/latest/lib/base -I /Users/briangwaltney/.opam/latest/lib/base/base_internalhash_types -I /Users/briangwaltney/.opam/latest/lib/base/caml -I /Users/briangwaltney/.opam/latest/lib/base/shadow_stdlib -I /Users/briangwaltney/.opam/latest/lib/ppx_compare/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/ppx_deriving/runtime -I /Users/briangwaltney/.opam/latest/lib/ppx_sexp_conv/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/result -I /Users/briangwaltney/.opam/latest/lib/sexplib0 -no-alias-deps -opaque -open Ocaml_int -o lib/.ocaml_int.objs/byte/ocaml_int__Token.cmo -c -impl lib/token.pp.ml)
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I lib/.ocaml_int.objs/byte -I /Users/briangwaltney/.opam/latest/lib/base -I /Users/briangwaltney/.opam/latest/lib/base/base_internalhash_types -I /Users/briangwaltney/.opam/latest/lib/base/caml -I /Users/briangwaltney/.opam/latest/lib/base/shadow_stdlib -I /Users/briangwaltney/.opam/latest/lib/ppx_compare/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/ppx_deriving/runtime -I /Users/briangwaltney/.opam/latest/lib/ppx_sexp_conv/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/result -I /Users/briangwaltney/.opam/latest/lib/sexplib0 -no-alias-deps -opaque -open Ocaml_int -o lib/.ocaml_int.objs/byte/ocaml_int__Ast.cmo -c -impl lib/ast.pp.ml)
+> File "lib/ast.ml", line 1, characters 0-10:
+> 1 | open Token
+>     ^^^^^^^^^^
+> Error (warning 33 [unused-open]): unused open Ocaml_int.Token.
+[2]
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I lib/.ocaml_int.objs/byte -I /Users/briangwaltney/.opam/latest/lib/base -I /Users/briangwaltney/.opam/latest/lib/base/base_internalhash_types -I /Users/briangwaltney/.opam/latest/lib/base/caml -I /Users/briangwaltney/.opam/latest/lib/base/shadow_stdlib -I /Users/briangwaltney/.opam/latest/lib/ppx_compare/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/ppx_deriving/runtime -I /Users/briangwaltney/.opam/latest/lib/ppx_sexp_conv/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/result -I /Users/briangwaltney/.opam/latest/lib/sexplib0 -no-alias-deps -opaque -open Ocaml_int -o lib/.ocaml_int.objs/byte/ocaml_int__Lexer.cmo -c -impl lib/lexer.pp.ml)
+> File "lib/lexer.ml", line 54, characters 23-26:
+> 54 |   lexer, Token.Integer num
+>                             ^^^
+> Error: This expression has type string but an expression was expected of type
+>          int
+[2]
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I lib/.ocaml_int.objs/byte -I lib/.ocaml_int.objs/native -I /Users/briangwaltney/.opam/latest/lib/base -I /Users/briangwaltney/.opam/latest/lib/base/base_internalhash_types -I /Users/briangwaltney/.opam/latest/lib/base/caml -I /Users/briangwaltney/.opam/latest/lib/base/shadow_stdlib -I /Users/briangwaltney/.opam/latest/lib/ppx_compare/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/ppx_deriving/runtime -I /Users/briangwaltney/.opam/latest/lib/ppx_sexp_conv/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/result -I /Users/briangwaltney/.opam/latest/lib/sexplib0 -intf-suffix .ml -no-alias-deps -opaque -open Ocaml_int -o lib/.ocaml_int.objs/native/ocaml_int__Token.cmx -c -impl lib/token.pp.ml)
+$ (cd _build/.sandbox/3a30eda0b6f9344eb91344745e8ddcd5/default && .ppx/471203fdee24cbf364232811313833fe/ppx.exe --cookie 'library-name="ocaml_int"' -o lib/token.pp.ml --impl lib/token.ml -corrected-suffix .ppx-corrected -diff-cmd - -dump-ast)
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamldep.opt -modules -impl lib/token.pp.ml) > _build/default/lib/.ocaml_int.objs/ocaml_int__Token.impl.d
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I lib/.ocaml_int.objs/byte -I /Users/briangwaltney/.opam/latest/lib/base -I /Users/briangwaltney/.opam/latest/lib/base/base_internalhash_types -I /Users/briangwaltney/.opam/latest/lib/base/caml -I /Users/briangwaltney/.opam/latest/lib/base/shadow_stdlib -I /Users/briangwaltney/.opam/latest/lib/ppx_compare/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/ppx_deriving/runtime -I /Users/briangwaltney/.opam/latest/lib/ppx_sexp_conv/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/result -I /Users/briangwaltney/.opam/latest/lib/sexplib0 -no-alias-deps -opaque -open Ocaml_int -o lib/.ocaml_int.objs/byte/ocaml_int__Token.cmo -c -impl lib/token.pp.ml)
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I lib/.ocaml_int.objs/byte -I /Users/briangwaltney/.opam/latest/lib/base -I /Users/briangwaltney/.opam/latest/lib/base/base_internalhash_types -I /Users/briangwaltney/.opam/latest/lib/base/caml -I /Users/briangwaltney/.opam/latest/lib/base/shadow_stdlib -I /Users/briangwaltney/.opam/latest/lib/ppx_compare/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/ppx_deriving/runtime -I /Users/briangwaltney/.opam/latest/lib/ppx_sexp_conv/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/result -I /Users/briangwaltney/.opam/latest/lib/sexplib0 -no-alias-deps -opaque -open Ocaml_int -o lib/.ocaml_int.objs/byte/ocaml_int__Ast.cmo -c -impl lib/ast.pp.ml)
+> File "lib/ast.ml", line 1, characters 0-10:
+> 1 | open Token
+>     ^^^^^^^^^^
+> Error (warning 33 [unused-open]): unused open Ocaml_int.Token.
+[2]
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I lib/.ocaml_int.objs/byte -I /Users/briangwaltney/.opam/latest/lib/base -I /Users/briangwaltney/.opam/latest/lib/base/base_internalhash_types -I /Users/briangwaltney/.opam/latest/lib/base/caml -I /Users/briangwaltney/.opam/latest/lib/base/shadow_stdlib -I /Users/briangwaltney/.opam/latest/lib/ppx_compare/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/ppx_deriving/runtime -I /Users/briangwaltney/.opam/latest/lib/ppx_sexp_conv/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/result -I /Users/briangwaltney/.opam/latest/lib/sexplib0 -no-alias-deps -opaque -open Ocaml_int -o lib/.ocaml_int.objs/byte/ocaml_int__Lexer.cmo -c -impl lib/lexer.pp.ml)
+> File "lib/lexer.ml", line 54, characters 23-26:
+> 54 |   lexer, Token.Integer num
+>                             ^^^
+> Error: This expression has type string but an expression was expected of type
+>          int
+[2]
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I lib/.ocaml_int.objs/byte -I lib/.ocaml_int.objs/native -I /Users/briangwaltney/.opam/latest/lib/base -I /Users/briangwaltney/.opam/latest/lib/base/base_internalhash_types -I /Users/briangwaltney/.opam/latest/lib/base/caml -I /Users/briangwaltney/.opam/latest/lib/base/shadow_stdlib -I /Users/briangwaltney/.opam/latest/lib/ppx_compare/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/ppx_deriving/runtime -I /Users/briangwaltney/.opam/latest/lib/ppx_sexp_conv/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/result -I /Users/briangwaltney/.opam/latest/lib/sexplib0 -intf-suffix .ml -no-alias-deps -opaque -open Ocaml_int -o lib/.ocaml_int.objs/native/ocaml_int__Token.cmx -c -impl lib/token.pp.ml)
+$ (cd _build/.sandbox/16e433803d393fac11946d8ef6a9d142/default && .ppx/471203fdee24cbf364232811313833fe/ppx.exe --cookie 'library-name="ocaml_int"' -o lib/token.pp.ml --impl lib/token.ml -corrected-suffix .ppx-corrected -diff-cmd - -dump-ast)
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I lib/.ocaml_int.objs/byte -I /Users/briangwaltney/.opam/latest/lib/base -I /Users/briangwaltney/.opam/latest/lib/base/base_internalhash_types -I /Users/briangwaltney/.opam/latest/lib/base/caml -I /Users/briangwaltney/.opam/latest/lib/base/shadow_stdlib -I /Users/briangwaltney/.opam/latest/lib/ppx_compare/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/ppx_deriving/runtime -I /Users/briangwaltney/.opam/latest/lib/ppx_sexp_conv/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/result -I /Users/briangwaltney/.opam/latest/lib/sexplib0 -no-alias-deps -opaque -open Ocaml_int -o lib/.ocaml_int.objs/byte/ocaml_int__Ast.cmo -c -impl lib/ast.pp.ml)
+> File "lib/ast.ml", line 1, characters 0-10:
+> 1 | open Token
+>     ^^^^^^^^^^
+> Error (warning 33 [unused-open]): unused open Ocaml_int.Token.
+[2]
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I lib/.ocaml_int.objs/byte -I /Users/briangwaltney/.opam/latest/lib/base -I /Users/briangwaltney/.opam/latest/lib/base/base_internalhash_types -I /Users/briangwaltney/.opam/latest/lib/base/caml -I /Users/briangwaltney/.opam/latest/lib/base/shadow_stdlib -I /Users/briangwaltney/.opam/latest/lib/ppx_compare/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/ppx_deriving/runtime -I /Users/briangwaltney/.opam/latest/lib/ppx_sexp_conv/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/result -I /Users/briangwaltney/.opam/latest/lib/sexplib0 -no-alias-deps -opaque -open Ocaml_int -o lib/.ocaml_int.objs/byte/ocaml_int__Lexer.cmo -c -impl lib/lexer.pp.ml)
+> File "lib/lexer.ml", line 54, characters 23-26:
+> 54 |   lexer, Token.Integer num
+>                             ^^^
+> Error: This expression has type string but an expression was expected of type
+>          int
+[2]
+$ (cd _build/.sandbox/a49ac11d1048fa4c8c83fb9f1d719231/default && .ppx/471203fdee24cbf364232811313833fe/ppx.exe --cookie 'library-name="ocaml_int"' -o lib/ast.pp.ml --impl lib/ast.ml -corrected-suffix .ppx-corrected -diff-cmd - -dump-ast)
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamldep.opt -modules -impl lib/ast.pp.ml) > _build/default/lib/.ocaml_int.objs/ocaml_int__Ast.impl.d
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I lib/.ocaml_int.objs/byte -I /Users/briangwaltney/.opam/latest/lib/base -I /Users/briangwaltney/.opam/latest/lib/base/base_internalhash_types -I /Users/briangwaltney/.opam/latest/lib/base/caml -I /Users/briangwaltney/.opam/latest/lib/base/shadow_stdlib -I /Users/briangwaltney/.opam/latest/lib/ppx_compare/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/ppx_deriving/runtime -I /Users/briangwaltney/.opam/latest/lib/ppx_sexp_conv/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/result -I /Users/briangwaltney/.opam/latest/lib/sexplib0 -no-alias-deps -opaque -open Ocaml_int -o lib/.ocaml_int.objs/byte/ocaml_int__Ast.cmo -c -impl lib/ast.pp.ml)
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I lib/.ocaml_int.objs/byte -I /Users/briangwaltney/.opam/latest/lib/base -I /Users/briangwaltney/.opam/latest/lib/base/base_internalhash_types -I /Users/briangwaltney/.opam/latest/lib/base/caml -I /Users/briangwaltney/.opam/latest/lib/base/shadow_stdlib -I /Users/briangwaltney/.opam/latest/lib/ppx_compare/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/ppx_deriving/runtime -I /Users/briangwaltney/.opam/latest/lib/ppx_sexp_conv/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/result -I /Users/briangwaltney/.opam/latest/lib/sexplib0 -no-alias-deps -opaque -open Ocaml_int -o lib/.ocaml_int.objs/byte/ocaml_int__Object.cmo -c -impl lib/object.pp.ml)
+> File "lib/object.ml", line 57, characters 10-13:
+> 57 |   let rec aux env =
+>                ^^^
+> Error (warning 39 [unused-rec-flag]): unused rec flag.
+>
+> File "lib/object.ml", line 1, characters 0-8:
+> 1 | open Ast
+>     ^^^^^^^^
+> Error (warning 33 [unused-open]): unused open Ocaml_int.Ast.
+>
+> File "lib/object.ml", line 61, characters 45-46:
+> 61 |       let str_of_store = Hashtbl.fold (fun k v acc -> acc ^ k ^ " ") env.store "" in
+>                                                   ^
+> Error (warning 27 [unused-var-strict]): unused variable v.
+[2]
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I lib/.ocaml_int.objs/byte -I lib/.ocaml_int.objs/native -I /Users/briangwaltney/.opam/latest/lib/base -I /Users/briangwaltney/.opam/latest/lib/base/base_internalhash_types -I /Users/briangwaltney/.opam/latest/lib/base/caml -I /Users/briangwaltney/.opam/latest/lib/base/shadow_stdlib -I /Users/briangwaltney/.opam/latest/lib/ppx_compare/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/ppx_deriving/runtime -I /Users/briangwaltney/.opam/latest/lib/ppx_sexp_conv/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/result -I /Users/briangwaltney/.opam/latest/lib/sexplib0 -intf-suffix .ml -no-alias-deps -opaque -open Ocaml_int -o lib/.ocaml_int.objs/native/ocaml_int__Ast.cmx -c -impl lib/ast.pp.ml)
+$ (cd _build/.sandbox/ffd8f606796bdd89a3bf8c7b92e5a175/default && .ppx/471203fdee24cbf364232811313833fe/ppx.exe --cookie 'library-name="ocaml_int"' -o lib/lexer.pp.ml --impl lib/lexer.ml -corrected-suffix .ppx-corrected -diff-cmd - -dump-ast)
+> File "lib/lexer.ml", line 58, characters 24-26:
+> 58 |                         ;;
+>                              ^^
+> Error: Syntax error: ')' expected
+> File "lib/lexer.ml", line 57, characters 23-24:
+> 57 |   lexer, Token.Integer (num
+>                             ^
+>   This '(' might be unmatched
+[1]
+$ (cd _build/.sandbox/00ed0d99d3f4ec68326ce3f23df9f68f/default && .ppx/471203fdee24cbf364232811313833fe/ppx.exe --cookie 'library-name="ocaml_int"' -o lib/object.pp.ml --impl lib/object.ml -corrected-suffix .ppx-corrected -diff-cmd - -dump-ast)
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamldep.opt -modules -impl lib/object.pp.ml) > _build/default/lib/.ocaml_int.objs/ocaml_int__Object.impl.d
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I lib/.ocaml_int.objs/byte -I /Users/briangwaltney/.opam/latest/lib/base -I /Users/briangwaltney/.opam/latest/lib/base/base_internalhash_types -I /Users/briangwaltney/.opam/latest/lib/base/caml -I /Users/briangwaltney/.opam/latest/lib/base/shadow_stdlib -I /Users/briangwaltney/.opam/latest/lib/ppx_compare/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/ppx_deriving/runtime -I /Users/briangwaltney/.opam/latest/lib/ppx_sexp_conv/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/result -I /Users/briangwaltney/.opam/latest/lib/sexplib0 -no-alias-deps -opaque -open Ocaml_int -o lib/.ocaml_int.objs/byte/ocaml_int__Object.cmo -c -impl lib/object.pp.ml)
+> File "lib/object.ml", line 55, characters 10-13:
+> 55 |   let rec aux env =
+>                ^^^
+> Error (warning 39 [unused-rec-flag]): unused rec flag.
+>
+> File "lib/object.ml", line 59, characters 45-46:
+> 59 |       let str_of_store = Hashtbl.fold (fun k v acc -> acc ^ k ^ " ") env.store "" in
+>                                                   ^
+> Error (warning 27 [unused-var-strict]): unused variable v.
+[2]
+$ (cd _build/.sandbox/e3d5a00debfdad5e02392aecdbb14455/default && .ppx/471203fdee24cbf364232811313833fe/ppx.exe --cookie 'library-name="ocaml_int"' -o lib/object.pp.ml --impl lib/object.ml -corrected-suffix .ppx-corrected -diff-cmd - -dump-ast)
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamldep.opt -modules -impl lib/object.pp.ml) > _build/default/lib/.ocaml_int.objs/ocaml_int__Object.impl.d
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I lib/.ocaml_int.objs/byte -I /Users/briangwaltney/.opam/latest/lib/base -I /Users/briangwaltney/.opam/latest/lib/base/base_internalhash_types -I /Users/briangwaltney/.opam/latest/lib/base/caml -I /Users/briangwaltney/.opam/latest/lib/base/shadow_stdlib -I /Users/briangwaltney/.opam/latest/lib/ppx_compare/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/ppx_deriving/runtime -I /Users/briangwaltney/.opam/latest/lib/ppx_sexp_conv/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/result -I /Users/briangwaltney/.opam/latest/lib/sexplib0 -no-alias-deps -opaque -open Ocaml_int -o lib/.ocaml_int.objs/byte/ocaml_int__Object.cmo -c -impl lib/object.pp.ml)
+> File "lib/object.ml", line 59, characters 45-46:
+> 59 |       let str_of_store = Hashtbl.fold (fun k v acc -> acc ^ k ^ " ") env.store "" in
+>                                                   ^
+> Error (warning 27 [unused-var-strict]): unused variable v.
+[2]
+$ (cd _build/.sandbox/a901b418f7665095e4a9fe258755fb05/default && .ppx/471203fdee24cbf364232811313833fe/ppx.exe --cookie 'library-name="ocaml_int"' -o lib/lexer.pp.ml --impl lib/lexer.ml -corrected-suffix .ppx-corrected -diff-cmd - -dump-ast)
+> File "lib/lexer.ml", line 58, characters 24-26:
+> 58 |                         ;;
+>                              ^^
+> Error: Syntax error: ')' expected
+> File "lib/lexer.ml", line 57, characters 23-24:
+> 57 |   lexer, Token.Integer (num
+>                             ^
+>   This '(' might be unmatched
+[1]
+$ (cd _build/.sandbox/b35e96bee8988a5591d074e3bb25bd4c/default && .ppx/471203fdee24cbf364232811313833fe/ppx.exe --cookie 'library-name="ocaml_int"' -o lib/lexer.pp.ml --impl lib/lexer.ml -corrected-suffix .ppx-corrected -diff-cmd - -dump-ast)
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamldep.opt -modules -impl lib/lexer.pp.ml) > _build/default/lib/.ocaml_int.objs/ocaml_int__Lexer.impl.d
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I lib/.ocaml_int.objs/byte -I /Users/briangwaltney/.opam/latest/lib/base -I /Users/briangwaltney/.opam/latest/lib/base/base_internalhash_types -I /Users/briangwaltney/.opam/latest/lib/base/caml -I /Users/briangwaltney/.opam/latest/lib/base/shadow_stdlib -I /Users/briangwaltney/.opam/latest/lib/ppx_compare/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/ppx_deriving/runtime -I /Users/briangwaltney/.opam/latest/lib/ppx_sexp_conv/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/result -I /Users/briangwaltney/.opam/latest/lib/sexplib0 -no-alias-deps -opaque -open Ocaml_int -o lib/.ocaml_int.objs/byte/ocaml_int__Lexer.cmo -c -impl lib/lexer.pp.ml)
+> File "lib/lexer.ml", line 84, characters 8-18:
+> 84 | let rec next_token lexer =
+>              ^^^^^^^^^^
+> Error (warning 39 [unused-rec-flag]): unused rec flag.
+>
+> File "lib/lexer.ml", line 125, characters 10-23:
+> 125 |   let _ = print_endline lexer.input in
+>                 ^^^^^^^^^^^^^
+> Error (alert deprecated): Base.print_endline
+> [2016-09] this element comes from the stdlib distributed with OCaml.
+> Use [Stdio.print_endline] instead.
+>
+> File "lib/lexer.ml", line 126, characters 10-19:
+> 126 |   let _ = print_int lexer.position in
+>                 ^^^^^^^^^
+> Error (alert deprecated): Base.print_int
+>
+> File "lib/lexer.ml", line 127, characters 10-23:
+> 127 |   let _ = print_endline "" in
+>                 ^^^^^^^^^^^^^
+> Error (alert deprecated): Base.print_endline
+> [2016-09] this element comes from the stdlib distributed with OCaml.
+> Use [Stdio.print_endline] instead.
+>
+> File "lib/lexer.ml", line 129, characters 12-25:
+> 129 |   | None -> print_endline "No char"
+>                   ^^^^^^^^^^^^^
+> Error (alert deprecated): Base.print_endline
+> [2016-09] this element comes from the stdlib distributed with OCaml.
+> Use [Stdio.print_endline] instead.
+>
+> File "lib/lexer.ml", line 130, characters 15-25:
+> 130 |   | Some ch -> print_char ch
+>                      ^^^^^^^^^^
+> Error (alert deprecated): Base.print_char
+> [2016-09] this element comes from the stdlib distributed with OCaml.
+> Use [Stdio.Out_channel.output_char Stdio.stdout] instead.
+[2]
+$ (cd _build/.sandbox/651eb88067a0da6b0d8d15547fff1f4a/default && .ppx/471203fdee24cbf364232811313833fe/ppx.exe --cookie 'library-name="ocaml_int"' -o lib/lexer.pp.ml --impl lib/lexer.ml -corrected-suffix .ppx-corrected -diff-cmd - -dump-ast)
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamldep.opt -modules -impl lib/lexer.pp.ml) > _build/default/lib/.ocaml_int.objs/ocaml_int__Lexer.impl.d
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I lib/.ocaml_int.objs/byte -I /Users/briangwaltney/.opam/latest/lib/base -I /Users/briangwaltney/.opam/latest/lib/base/base_internalhash_types -I /Users/briangwaltney/.opam/latest/lib/base/caml -I /Users/briangwaltney/.opam/latest/lib/base/shadow_stdlib -I /Users/briangwaltney/.opam/latest/lib/ppx_compare/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/ppx_deriving/runtime -I /Users/briangwaltney/.opam/latest/lib/ppx_sexp_conv/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/result -I /Users/briangwaltney/.opam/latest/lib/sexplib0 -no-alias-deps -opaque -open Ocaml_int -o lib/.ocaml_int.objs/byte/ocaml_int__Lexer.cmo -c -impl lib/lexer.pp.ml)
+> File "lib/lexer.ml", line 84, characters 8-18:
+> 84 | let rec next_token lexer =
+>              ^^^^^^^^^^
+> Error (warning 39 [unused-rec-flag]): unused rec flag.
+>
+> File "lib/lexer.ml", line 125, characters 10-23:
+> 125 |   let _ = print_endline lexer.input in
+>                 ^^^^^^^^^^^^^
+> Error (alert deprecated): Base.print_endline
+> [2016-09] this element comes from the stdlib distributed with OCaml.
+> Use [Stdio.print_endline] instead.
+>
+> File "lib/lexer.ml", line 126, characters 10-19:
+> 126 |   let _ = print_int lexer.position in
+>                 ^^^^^^^^^
+> Error (alert deprecated): Base.print_int
+>
+> File "lib/lexer.ml", line 129, characters 12-25:
+> 129 |   | None -> print_endline "No char"
+>                   ^^^^^^^^^^^^^
+> Error (alert deprecated): Base.print_endline
+> [2016-09] this element comes from the stdlib distributed with OCaml.
+> Use [Stdio.print_endline] instead.
+>
+> File "lib/lexer.ml", line 130, characters 15-25:
+> 130 |   | Some ch -> print_char ch
+>                      ^^^^^^^^^^
+> Error (alert deprecated): Base.print_char
+> [2016-09] this element comes from the stdlib distributed with OCaml.
+> Use [Stdio.Out_channel.output_char Stdio.stdout] instead.
+[2]
+$ (cd _build/.sandbox/237a1d66bfca2c083b2495d49f62bc5a/default && .ppx/471203fdee24cbf364232811313833fe/ppx.exe --cookie 'library-name="ocaml_int"' -o lib/lexer.pp.ml --impl lib/lexer.ml -corrected-suffix .ppx-corrected -diff-cmd - -dump-ast)
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamldep.opt -modules -impl lib/lexer.pp.ml) > _build/default/lib/.ocaml_int.objs/ocaml_int__Lexer.impl.d
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I lib/.ocaml_int.objs/byte -I /Users/briangwaltney/.opam/latest/lib/base -I /Users/briangwaltney/.opam/latest/lib/base/base_internalhash_types -I /Users/briangwaltney/.opam/latest/lib/base/caml -I /Users/briangwaltney/.opam/latest/lib/base/shadow_stdlib -I /Users/briangwaltney/.opam/latest/lib/ppx_compare/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/ppx_deriving/runtime -I /Users/briangwaltney/.opam/latest/lib/ppx_sexp_conv/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/result -I /Users/briangwaltney/.opam/latest/lib/sexplib0 -no-alias-deps -opaque -open Ocaml_int -o lib/.ocaml_int.objs/byte/ocaml_int__Lexer.cmo -c -impl lib/lexer.pp.ml)
+> File "lib/lexer.ml", line 84, characters 8-18:
+> 84 | let rec next_token lexer =
+>              ^^^^^^^^^^
+> Error (warning 39 [unused-rec-flag]): unused rec flag.
+>
+> File "lib/lexer.ml", line 129, characters 12-25:
+> 129 |   | None -> print_endline "No char"
+>                   ^^^^^^^^^^^^^
+> Error (alert deprecated): Base.print_endline
+> [2016-09] this element comes from the stdlib distributed with OCaml.
+> Use [Stdio.print_endline] instead.
+>
+> File "lib/lexer.ml", line 130, characters 15-25:
+> 130 |   | Some ch -> print_char ch
+>                      ^^^^^^^^^^
+> Error (alert deprecated): Base.print_char
+> [2016-09] this element comes from the stdlib distributed with OCaml.
+> Use [Stdio.Out_channel.output_char Stdio.stdout] instead.
+[2]
+$ (cd _build/.sandbox/201a453ec6a3de4a3077e583ff2a979a/default && .ppx/471203fdee24cbf364232811313833fe/ppx.exe --cookie 'library-name="ocaml_int"' -o lib/lexer.pp.ml --impl lib/lexer.ml -corrected-suffix .ppx-corrected -diff-cmd - -dump-ast)
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamldep.opt -modules -impl lib/lexer.pp.ml) > _build/default/lib/.ocaml_int.objs/ocaml_int__Lexer.impl.d
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I lib/.ocaml_int.objs/byte -I /Users/briangwaltney/.opam/latest/lib/base -I /Users/briangwaltney/.opam/latest/lib/base/base_internalhash_types -I /Users/briangwaltney/.opam/latest/lib/base/caml -I /Users/briangwaltney/.opam/latest/lib/base/shadow_stdlib -I /Users/briangwaltney/.opam/latest/lib/ppx_compare/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/ppx_deriving/runtime -I /Users/briangwaltney/.opam/latest/lib/ppx_sexp_conv/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/result -I /Users/briangwaltney/.opam/latest/lib/sexplib0 -no-alias-deps -opaque -open Ocaml_int -o lib/.ocaml_int.objs/byte/ocaml_int__Lexer.cmo -c -impl lib/lexer.pp.ml)
+> File "lib/lexer.ml", line 84, characters 8-18:
+> 84 | let rec next_token lexer =
+>              ^^^^^^^^^^
+> Error (warning 39 [unused-rec-flag]): unused rec flag.
+[2]
+$ (cd _build/.sandbox/4b8b2ab5fe662e6b537d6c5a5475bc52/default && .ppx/471203fdee24cbf364232811313833fe/ppx.exe --cookie 'library-name="ocaml_int"' -o lib/lexer.pp.ml --impl lib/lexer.ml -corrected-suffix .ppx-corrected -diff-cmd - -dump-ast)
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamldep.opt -modules -impl lib/lexer.pp.ml) > _build/default/lib/.ocaml_int.objs/ocaml_int__Lexer.impl.d
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I lib/.ocaml_int.objs/byte -I /Users/briangwaltney/.opam/latest/lib/base -I /Users/briangwaltney/.opam/latest/lib/base/base_internalhash_types -I /Users/briangwaltney/.opam/latest/lib/base/caml -I /Users/briangwaltney/.opam/latest/lib/base/shadow_stdlib -I /Users/briangwaltney/.opam/latest/lib/ppx_compare/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/ppx_deriving/runtime -I /Users/briangwaltney/.opam/latest/lib/ppx_sexp_conv/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/result -I /Users/briangwaltney/.opam/latest/lib/sexplib0 -no-alias-deps -opaque -open Ocaml_int -o lib/.ocaml_int.objs/byte/ocaml_int__Lexer.cmo -c -impl lib/lexer.pp.ml)
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I lib/.ocaml_int.objs/byte -I /Users/briangwaltney/.opam/latest/lib/base -I /Users/briangwaltney/.opam/latest/lib/base/base_internalhash_types -I /Users/briangwaltney/.opam/latest/lib/base/caml -I /Users/briangwaltney/.opam/latest/lib/base/shadow_stdlib -I /Users/briangwaltney/.opam/latest/lib/ppx_compare/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/ppx_deriving/runtime -I /Users/briangwaltney/.opam/latest/lib/ppx_sexp_conv/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/result -I /Users/briangwaltney/.opam/latest/lib/sexplib0 -no-alias-deps -opaque -open Ocaml_int -o lib/.ocaml_int.objs/byte/ocaml_int__Parser.cmo -c -impl lib/parser.pp.ml)
+> File "lib/parser.ml", line 31, characters 28-43:
+> 31 |   | _ -> failwith ("bad " ^ string_of_token tkn ^ " statement")
+>                                  ^^^^^^^^^^^^^^^
+> Error: Unbound value string_of_token
+[2]
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I lib/.ocaml_int.objs/byte -I lib/.ocaml_int.objs/native -I /Users/briangwaltney/.opam/latest/lib/base -I /Users/briangwaltney/.opam/latest/lib/base/base_internalhash_types -I /Users/briangwaltney/.opam/latest/lib/base/caml -I /Users/briangwaltney/.opam/latest/lib/base/shadow_stdlib -I /Users/briangwaltney/.opam/latest/lib/ppx_compare/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/ppx_deriving/runtime -I /Users/briangwaltney/.opam/latest/lib/ppx_sexp_conv/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/result -I /Users/briangwaltney/.opam/latest/lib/sexplib0 -intf-suffix .ml -no-alias-deps -opaque -open Ocaml_int -o lib/.ocaml_int.objs/native/ocaml_int__Lexer.cmx -c -impl lib/lexer.pp.ml)
+$ (cd _build/.sandbox/f3daa5767c68a44b507eb16ca294f505/default && .ppx/471203fdee24cbf364232811313833fe/ppx.exe --cookie 'library-name="ocaml_int"' -o lib/parser.pp.ml --impl lib/parser.ml -corrected-suffix .ppx-corrected -diff-cmd - -dump-ast)
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamldep.opt -modules -impl lib/parser.pp.ml) > _build/default/lib/.ocaml_int.objs/ocaml_int__Parser.impl.d
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I lib/.ocaml_int.objs/byte -I /Users/briangwaltney/.opam/latest/lib/base -I /Users/briangwaltney/.opam/latest/lib/base/base_internalhash_types -I /Users/briangwaltney/.opam/latest/lib/base/caml -I /Users/briangwaltney/.opam/latest/lib/base/shadow_stdlib -I /Users/briangwaltney/.opam/latest/lib/ppx_compare/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/ppx_deriving/runtime -I /Users/briangwaltney/.opam/latest/lib/ppx_sexp_conv/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/result -I /Users/briangwaltney/.opam/latest/lib/sexplib0 -no-alias-deps -opaque -open Ocaml_int -o lib/.ocaml_int.objs/byte/ocaml_int__Parser.cmo -c -impl lib/parser.pp.ml)
+> File "lib/parser.ml", line 32, characters 28-43:
+> 32 |   | _ -> failwith ("bad " ^ string_of_token tkn ^ " statement")
+>                                  ^^^^^^^^^^^^^^^
+> Error: Unbound value string_of_token
+[2]
+$ (cd _build/.sandbox/64ba98ce833517fce035b4f220bcd5ba/default && .ppx/471203fdee24cbf364232811313833fe/ppx.exe --cookie 'library-name="ocaml_int"' -o lib/parser.pp.ml --impl lib/parser.ml -corrected-suffix .ppx-corrected -diff-cmd - -dump-ast)
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamldep.opt -modules -impl lib/parser.pp.ml) > _build/default/lib/.ocaml_int.objs/ocaml_int__Parser.impl.d
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I lib/.ocaml_int.objs/byte -I /Users/briangwaltney/.opam/latest/lib/base -I /Users/briangwaltney/.opam/latest/lib/base/base_internalhash_types -I /Users/briangwaltney/.opam/latest/lib/base/caml -I /Users/briangwaltney/.opam/latest/lib/base/shadow_stdlib -I /Users/briangwaltney/.opam/latest/lib/ppx_compare/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/ppx_deriving/runtime -I /Users/briangwaltney/.opam/latest/lib/ppx_sexp_conv/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/result -I /Users/briangwaltney/.opam/latest/lib/sexplib0 -no-alias-deps -opaque -open Ocaml_int -o lib/.ocaml_int.objs/byte/ocaml_int__Parser.cmo -c -impl lib/parser.pp.ml)
+> File "lib/parser.ml", line 32, characters 29-32:
+> 32 |   | _ -> failwith ("bad " ^ (tkn |> Token.show) ^ " statement")
+>                                   ^^^
+> Error: This expression has type int/2 but an expression was expected of type
+>          t
+>        File "_none_", line 1:
+>          Definition of type int/2
+[2]
+$ (cd _build/.sandbox/e2bc610607f4c1edf25b317d53875446/default && .ppx/471203fdee24cbf364232811313833fe/ppx.exe --cookie 'library-name="ocaml_int"' -o lib/parser.pp.ml --impl lib/parser.ml -corrected-suffix .ppx-corrected -diff-cmd - -dump-ast)
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamldep.opt -modules -impl lib/parser.pp.ml) > _build/default/lib/.ocaml_int.objs/ocaml_int__Parser.impl.d
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I lib/.ocaml_int.objs/byte -I /Users/briangwaltney/.opam/latest/lib/base -I /Users/briangwaltney/.opam/latest/lib/base/base_internalhash_types -I /Users/briangwaltney/.opam/latest/lib/base/caml -I /Users/briangwaltney/.opam/latest/lib/base/shadow_stdlib -I /Users/briangwaltney/.opam/latest/lib/ppx_compare/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/ppx_deriving/runtime -I /Users/briangwaltney/.opam/latest/lib/ppx_sexp_conv/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/result -I /Users/briangwaltney/.opam/latest/lib/sexplib0 -no-alias-deps -opaque -open Ocaml_int -o lib/.ocaml_int.objs/byte/ocaml_int__Parser.cmo -c -impl lib/parser.pp.ml)
+> File "lib/parser.ml", line 40, characters 39-52:
+> 40 |       | Integer str -> IntegerLiteral (int_of_string str), t
+>                                             ^^^^^^^^^^^^^
+> Error (alert deprecated): Base.int_of_string
+> [2016-09] this element comes from the stdlib distributed with OCaml.
+> Use [Int.of_string] instead.
+>
+> File "lib/parser.ml", line 40, characters 53-56:
+> 40 |       | Integer str -> IntegerLiteral (int_of_string str), t
+>                                                           ^^^
+> Error: This expression has type int but an expression was expected of type
+>          string/2
+>        File "_none_", line 1:
+>          Definition of type string/2
+[2]
+$ (cd _build/.sandbox/1b8e6a1509c27c06a390c10e1268e84f/default && .ppx/471203fdee24cbf364232811313833fe/ppx.exe --cookie 'library-name="ocaml_int"' -o lib/parser.pp.ml --impl lib/parser.ml -corrected-suffix .ppx-corrected -diff-cmd - -dump-ast)
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamldep.opt -modules -impl lib/parser.pp.ml) > _build/default/lib/.ocaml_int.objs/ocaml_int__Parser.impl.d
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I lib/.ocaml_int.objs/byte -I /Users/briangwaltney/.opam/latest/lib/base -I /Users/briangwaltney/.opam/latest/lib/base/base_internalhash_types -I /Users/briangwaltney/.opam/latest/lib/base/caml -I /Users/briangwaltney/.opam/latest/lib/base/shadow_stdlib -I /Users/briangwaltney/.opam/latest/lib/ppx_compare/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/ppx_deriving/runtime -I /Users/briangwaltney/.opam/latest/lib/ppx_sexp_conv/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/result -I /Users/briangwaltney/.opam/latest/lib/sexplib0 -no-alias-deps -opaque -open Ocaml_int -o lib/.ocaml_int.objs/byte/ocaml_int__Parser.cmo -c -impl lib/parser.pp.ml)
+> File "lib/parser.ml", line 43, characters 32-47:
+> 43 |         PrefixExpression { op = string_of_token h; right = exp }, t
+>                                      ^^^^^^^^^^^^^^^
+> Error: Unbound value string_of_token
+[2]
+$ (cd _build/.sandbox/a6861d26a5946e5edde9ad1be70de29b/default && .ppx/471203fdee24cbf364232811313833fe/ppx.exe --cookie 'library-name="ocaml_int"' -o lib/ast.pp.ml --impl lib/ast.ml -corrected-suffix .ppx-corrected -diff-cmd - -dump-ast)
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamldep.opt -modules -impl lib/ast.pp.ml) > _build/default/lib/.ocaml_int.objs/ocaml_int__Ast.impl.d
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I lib/.ocaml_int.objs/byte -I /Users/briangwaltney/.opam/latest/lib/base -I /Users/briangwaltney/.opam/latest/lib/base/base_internalhash_types -I /Users/briangwaltney/.opam/latest/lib/base/caml -I /Users/briangwaltney/.opam/latest/lib/base/shadow_stdlib -I /Users/briangwaltney/.opam/latest/lib/ppx_compare/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/ppx_deriving/runtime -I /Users/briangwaltney/.opam/latest/lib/ppx_sexp_conv/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/result -I /Users/briangwaltney/.opam/latest/lib/sexplib0 -no-alias-deps -opaque -open Ocaml_int -o lib/.ocaml_int.objs/byte/ocaml_int__Ast.cmo -c -impl lib/ast.pp.ml)
+> File "lib/ast.ml", line 46, characters 38-40:
+> 46 |   | PrefixExpression { op; right } -> op ^ string_of_exp right
+>                                            ^^
+> Error: This expression has type Token.t
+>        but an expression was expected of type string
+[2]
+$ (cd _build/.sandbox/da4fac101d0488c62816bb2d8b2c05b9/default && .ppx/471203fdee24cbf364232811313833fe/ppx.exe --cookie 'library-name="ocaml_int"' -o lib/ast.pp.ml --impl lib/ast.ml -corrected-suffix .ppx-corrected -diff-cmd - -dump-ast)
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamldep.opt -modules -impl lib/ast.pp.ml) > _build/default/lib/.ocaml_int.objs/ocaml_int__Ast.impl.d
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I lib/.ocaml_int.objs/byte -I /Users/briangwaltney/.opam/latest/lib/base -I /Users/briangwaltney/.opam/latest/lib/base/base_internalhash_types -I /Users/briangwaltney/.opam/latest/lib/base/caml -I /Users/briangwaltney/.opam/latest/lib/base/shadow_stdlib -I /Users/briangwaltney/.opam/latest/lib/ppx_compare/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/ppx_deriving/runtime -I /Users/briangwaltney/.opam/latest/lib/ppx_sexp_conv/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/result -I /Users/briangwaltney/.opam/latest/lib/sexplib0 -no-alias-deps -opaque -open Ocaml_int -o lib/.ocaml_int.objs/byte/ocaml_int__Ast.cmo -c -impl lib/ast.pp.ml)
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I lib/.ocaml_int.objs/byte -I /Users/briangwaltney/.opam/latest/lib/base -I /Users/briangwaltney/.opam/latest/lib/base/base_internalhash_types -I /Users/briangwaltney/.opam/latest/lib/base/caml -I /Users/briangwaltney/.opam/latest/lib/base/shadow_stdlib -I /Users/briangwaltney/.opam/latest/lib/ppx_compare/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/ppx_deriving/runtime -I /Users/briangwaltney/.opam/latest/lib/ppx_sexp_conv/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/result -I /Users/briangwaltney/.opam/latest/lib/sexplib0 -no-alias-deps -opaque -open Ocaml_int -o lib/.ocaml_int.objs/byte/ocaml_int__Object.cmo -c -impl lib/object.pp.ml)
+> File "lib/object.ml", line 46, characters 8-26:
+> 46 |       ^ Ast.string_of_stmt body
+>              ^^^^^^^^^^^^^^^^^^
+> Error: Unbound value Ast.string_of_stmt
+[2]
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I lib/.ocaml_int.objs/byte -I /Users/briangwaltney/.opam/latest/lib/base -I /Users/briangwaltney/.opam/latest/lib/base/base_internalhash_types -I /Users/briangwaltney/.opam/latest/lib/base/caml -I /Users/briangwaltney/.opam/latest/lib/base/shadow_stdlib -I /Users/briangwaltney/.opam/latest/lib/ppx_compare/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/ppx_deriving/runtime -I /Users/briangwaltney/.opam/latest/lib/ppx_sexp_conv/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/result -I /Users/briangwaltney/.opam/latest/lib/sexplib0 -no-alias-deps -opaque -open Ocaml_int -o lib/.ocaml_int.objs/byte/ocaml_int__Parser.cmo -c -impl lib/parser.pp.ml)
+> File "lib/parser.ml", line 43, characters 32-47:
+> 43 |         PrefixExpression { op = string_of_token h; right = exp }, t
+>                                      ^^^^^^^^^^^^^^^
+> Error: Unbound value string_of_token
+[2]
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I lib/.ocaml_int.objs/byte -I lib/.ocaml_int.objs/native -I /Users/briangwaltney/.opam/latest/lib/base -I /Users/briangwaltney/.opam/latest/lib/base/base_internalhash_types -I /Users/briangwaltney/.opam/latest/lib/base/caml -I /Users/briangwaltney/.opam/latest/lib/base/shadow_stdlib -I /Users/briangwaltney/.opam/latest/lib/ppx_compare/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/ppx_deriving/runtime -I /Users/briangwaltney/.opam/latest/lib/ppx_sexp_conv/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/result -I /Users/briangwaltney/.opam/latest/lib/sexplib0 -intf-suffix .ml -no-alias-deps -opaque -open Ocaml_int -o lib/.ocaml_int.objs/native/ocaml_int__Ast.cmx -c -impl lib/ast.pp.ml)
+$ (cd _build/.sandbox/071ead52b6848ad40e14087159dfe0fe/default && .ppx/471203fdee24cbf364232811313833fe/ppx.exe --cookie 'library-name="ocaml_int"' -o lib/ast.pp.ml --impl lib/ast.ml -corrected-suffix .ppx-corrected -diff-cmd - -dump-ast)
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamldep.opt -modules -impl lib/ast.pp.ml) > _build/default/lib/.ocaml_int.objs/ocaml_int__Ast.impl.d
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I lib/.ocaml_int.objs/byte -I /Users/briangwaltney/.opam/latest/lib/base -I /Users/briangwaltney/.opam/latest/lib/base/base_internalhash_types -I /Users/briangwaltney/.opam/latest/lib/base/caml -I /Users/briangwaltney/.opam/latest/lib/base/shadow_stdlib -I /Users/briangwaltney/.opam/latest/lib/ppx_compare/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/ppx_deriving/runtime -I /Users/briangwaltney/.opam/latest/lib/ppx_sexp_conv/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/result -I /Users/briangwaltney/.opam/latest/lib/sexplib0 -no-alias-deps -opaque -open Ocaml_int -o lib/.ocaml_int.objs/byte/ocaml_int__Ast.cmo -c -impl lib/ast.pp.ml)
+> File "lib/ast.ml", line 2, characters 18-24:
+> 2 |   | Identifier of string
+>                       ^^^^^^
+> Error: Unbound value string_of_sexp
+[2]
+$ (cd _build/.sandbox/c4ca85756d72a5438e482e52d4113286/default && .ppx/471203fdee24cbf364232811313833fe/ppx.exe --cookie 'library-name="ocaml_int"' -o lib/ast.pp.ml --impl lib/ast.ml -corrected-suffix .ppx-corrected -diff-cmd - -dump-ast)
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamldep.opt -modules -impl lib/ast.pp.ml) > _build/default/lib/.ocaml_int.objs/ocaml_int__Ast.impl.d
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I lib/.ocaml_int.objs/byte -I /Users/briangwaltney/.opam/latest/lib/base -I /Users/briangwaltney/.opam/latest/lib/base/base_internalhash_types -I /Users/briangwaltney/.opam/latest/lib/base/caml -I /Users/briangwaltney/.opam/latest/lib/base/shadow_stdlib -I /Users/briangwaltney/.opam/latest/lib/ppx_compare/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/ppx_deriving/runtime -I /Users/briangwaltney/.opam/latest/lib/ppx_sexp_conv/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/result -I /Users/briangwaltney/.opam/latest/lib/sexplib0 -no-alias-deps -opaque -open Ocaml_int -o lib/.ocaml_int.objs/byte/ocaml_int__Ast.cmo -c -impl lib/ast.pp.ml)
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I lib/.ocaml_int.objs/byte -I /Users/briangwaltney/.opam/latest/lib/base -I /Users/briangwaltney/.opam/latest/lib/base/base_internalhash_types -I /Users/briangwaltney/.opam/latest/lib/base/caml -I /Users/briangwaltney/.opam/latest/lib/base/shadow_stdlib -I /Users/briangwaltney/.opam/latest/lib/ppx_compare/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/ppx_deriving/runtime -I /Users/briangwaltney/.opam/latest/lib/ppx_sexp_conv/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/result -I /Users/briangwaltney/.opam/latest/lib/sexplib0 -no-alias-deps -opaque -open Ocaml_int -o lib/.ocaml_int.objs/byte/ocaml_int__Object.cmo -c -impl lib/object.pp.ml)
+> File "lib/object.ml", line 46, characters 8-26:
+> 46 |       ^ Ast.string_of_stmt body
+>              ^^^^^^^^^^^^^^^^^^
+> Error: Unbound value Ast.string_of_stmt
+[2]
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I lib/.ocaml_int.objs/byte -I /Users/briangwaltney/.opam/latest/lib/base -I /Users/briangwaltney/.opam/latest/lib/base/base_internalhash_types -I /Users/briangwaltney/.opam/latest/lib/base/caml -I /Users/briangwaltney/.opam/latest/lib/base/shadow_stdlib -I /Users/briangwaltney/.opam/latest/lib/ppx_compare/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/ppx_deriving/runtime -I /Users/briangwaltney/.opam/latest/lib/ppx_sexp_conv/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/result -I /Users/briangwaltney/.opam/latest/lib/sexplib0 -no-alias-deps -opaque -open Ocaml_int -o lib/.ocaml_int.objs/byte/ocaml_int__Parser.cmo -c -impl lib/parser.pp.ml)
+> File "lib/parser.ml", line 43, characters 32-47:
+> 43 |         PrefixExpression { op = string_of_token h; right = exp }, t
+>                                      ^^^^^^^^^^^^^^^
+> Error: Unbound value string_of_token
+[2]
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I lib/.ocaml_int.objs/byte -I lib/.ocaml_int.objs/native -I /Users/briangwaltney/.opam/latest/lib/base -I /Users/briangwaltney/.opam/latest/lib/base/base_internalhash_types -I /Users/briangwaltney/.opam/latest/lib/base/caml -I /Users/briangwaltney/.opam/latest/lib/base/shadow_stdlib -I /Users/briangwaltney/.opam/latest/lib/ppx_compare/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/ppx_deriving/runtime -I /Users/briangwaltney/.opam/latest/lib/ppx_sexp_conv/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/result -I /Users/briangwaltney/.opam/latest/lib/sexplib0 -intf-suffix .ml -no-alias-deps -opaque -open Ocaml_int -o lib/.ocaml_int.objs/native/ocaml_int__Ast.cmx -c -impl lib/ast.pp.ml)
+$ (cd _build/.sandbox/0384fa617ecc8a0179c06aed26bd6ca9/default && .ppx/471203fdee24cbf364232811313833fe/ppx.exe --cookie 'library-name="ocaml_int"' -o lib/ast.pp.ml --impl lib/ast.ml -corrected-suffix .ppx-corrected -diff-cmd - -dump-ast)
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamldep.opt -modules -impl lib/ast.pp.ml) > _build/default/lib/.ocaml_int.objs/ocaml_int__Ast.impl.d
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I lib/.ocaml_int.objs/byte -I /Users/briangwaltney/.opam/latest/lib/base -I /Users/briangwaltney/.opam/latest/lib/base/base_internalhash_types -I /Users/briangwaltney/.opam/latest/lib/base/caml -I /Users/briangwaltney/.opam/latest/lib/base/shadow_stdlib -I /Users/briangwaltney/.opam/latest/lib/ppx_compare/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/ppx_deriving/runtime -I /Users/briangwaltney/.opam/latest/lib/ppx_sexp_conv/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/result -I /Users/briangwaltney/.opam/latest/lib/sexplib0 -no-alias-deps -opaque -open Ocaml_int -o lib/.ocaml_int.objs/byte/ocaml_int__Ast.cmo -c -impl lib/ast.pp.ml)
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I lib/.ocaml_int.objs/byte -I /Users/briangwaltney/.opam/latest/lib/base -I /Users/briangwaltney/.opam/latest/lib/base/base_internalhash_types -I /Users/briangwaltney/.opam/latest/lib/base/caml -I /Users/briangwaltney/.opam/latest/lib/base/shadow_stdlib -I /Users/briangwaltney/.opam/latest/lib/ppx_compare/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/ppx_deriving/runtime -I /Users/briangwaltney/.opam/latest/lib/ppx_sexp_conv/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/result -I /Users/briangwaltney/.opam/latest/lib/sexplib0 -no-alias-deps -opaque -open Ocaml_int -o lib/.ocaml_int.objs/byte/ocaml_int__Object.cmo -c -impl lib/object.pp.ml)
+> File "lib/object.ml", line 46, characters 8-26:
+> 46 |       ^ Ast.string_of_stmt body
+>              ^^^^^^^^^^^^^^^^^^
+> Error: Unbound value Ast.string_of_stmt
+[2]
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I lib/.ocaml_int.objs/byte -I /Users/briangwaltney/.opam/latest/lib/base -I /Users/briangwaltney/.opam/latest/lib/base/base_internalhash_types -I /Users/briangwaltney/.opam/latest/lib/base/caml -I /Users/briangwaltney/.opam/latest/lib/base/shadow_stdlib -I /Users/briangwaltney/.opam/latest/lib/ppx_compare/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/ppx_deriving/runtime -I /Users/briangwaltney/.opam/latest/lib/ppx_sexp_conv/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/result -I /Users/briangwaltney/.opam/latest/lib/sexplib0 -no-alias-deps -opaque -open Ocaml_int -o lib/.ocaml_int.objs/byte/ocaml_int__Parser.cmo -c -impl lib/parser.pp.ml)
+> File "lib/parser.ml", line 43, characters 32-47:
+> 43 |         PrefixExpression { op = string_of_token h; right = exp }, t
+>                                      ^^^^^^^^^^^^^^^
+> Error: Unbound value string_of_token
+[2]
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I lib/.ocaml_int.objs/byte -I lib/.ocaml_int.objs/native -I /Users/briangwaltney/.opam/latest/lib/base -I /Users/briangwaltney/.opam/latest/lib/base/base_internalhash_types -I /Users/briangwaltney/.opam/latest/lib/base/caml -I /Users/briangwaltney/.opam/latest/lib/base/shadow_stdlib -I /Users/briangwaltney/.opam/latest/lib/ppx_compare/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/ppx_deriving/runtime -I /Users/briangwaltney/.opam/latest/lib/ppx_sexp_conv/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/result -I /Users/briangwaltney/.opam/latest/lib/sexplib0 -intf-suffix .ml -no-alias-deps -opaque -open Ocaml_int -o lib/.ocaml_int.objs/native/ocaml_int__Ast.cmx -c -impl lib/ast.pp.ml)
+$ (cd _build/.sandbox/a9827f6d555d09de8770e0c7d6de1e6c/default && .ppx/471203fdee24cbf364232811313833fe/ppx.exe --cookie 'library-name="ocaml_int"' -o lib/object.pp.ml --impl lib/object.ml -corrected-suffix .ppx-corrected -diff-cmd - -dump-ast)
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamldep.opt -modules -impl lib/object.pp.ml) > _build/default/lib/.ocaml_int.objs/ocaml_int__Object.impl.d
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I lib/.ocaml_int.objs/byte -I /Users/briangwaltney/.opam/latest/lib/base -I /Users/briangwaltney/.opam/latest/lib/base/base_internalhash_types -I /Users/briangwaltney/.opam/latest/lib/base/caml -I /Users/briangwaltney/.opam/latest/lib/base/shadow_stdlib -I /Users/briangwaltney/.opam/latest/lib/ppx_compare/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/ppx_deriving/runtime -I /Users/briangwaltney/.opam/latest/lib/ppx_sexp_conv/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/result -I /Users/briangwaltney/.opam/latest/lib/sexplib0 -no-alias-deps -opaque -open Ocaml_int -o lib/.ocaml_int.objs/byte/ocaml_int__Object.cmo -c -impl lib/object.pp.ml)
+> File "lib/object.ml", line 59, characters 45-46:
+> 59 |       let str_of_store = Hashtbl.fold (fun k v acc -> acc ^ k ^ " ") env.store "" in
+>                                                   ^
+> Error (warning 27 [unused-var-strict]): unused variable v.
+[2]
+$ (cd _build/.sandbox/1ce4ed2f6c623a48abead335ab8b1ccd/default && .ppx/471203fdee24cbf364232811313833fe/ppx.exe --cookie 'library-name="ocaml_int"' -o lib/object.pp.ml --impl lib/object.ml -corrected-suffix .ppx-corrected -diff-cmd - -dump-ast)
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamldep.opt -modules -impl lib/object.pp.ml) > _build/default/lib/.ocaml_int.objs/ocaml_int__Object.impl.d
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I lib/.ocaml_int.objs/byte -I /Users/briangwaltney/.opam/latest/lib/base -I /Users/briangwaltney/.opam/latest/lib/base/base_internalhash_types -I /Users/briangwaltney/.opam/latest/lib/base/caml -I /Users/briangwaltney/.opam/latest/lib/base/shadow_stdlib -I /Users/briangwaltney/.opam/latest/lib/ppx_compare/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/ppx_deriving/runtime -I /Users/briangwaltney/.opam/latest/lib/ppx_sexp_conv/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/result -I /Users/briangwaltney/.opam/latest/lib/sexplib0 -no-alias-deps -opaque -open Ocaml_int -o lib/.ocaml_int.objs/byte/ocaml_int__Object.cmo -c -impl lib/object.pp.ml)
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I lib/.ocaml_int.objs/byte -I lib/.ocaml_int.objs/native -I /Users/briangwaltney/.opam/latest/lib/base -I /Users/briangwaltney/.opam/latest/lib/base/base_internalhash_types -I /Users/briangwaltney/.opam/latest/lib/base/caml -I /Users/briangwaltney/.opam/latest/lib/base/shadow_stdlib -I /Users/briangwaltney/.opam/latest/lib/ppx_compare/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/ppx_deriving/runtime -I /Users/briangwaltney/.opam/latest/lib/ppx_sexp_conv/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/result -I /Users/briangwaltney/.opam/latest/lib/sexplib0 -intf-suffix .ml -no-alias-deps -opaque -open Ocaml_int -o lib/.ocaml_int.objs/native/ocaml_int__Object.cmx -c -impl lib/object.pp.ml)
+$ (cd _build/.sandbox/3fede5bd9c5e932a4f3b9306998028a5/default && .ppx/471203fdee24cbf364232811313833fe/ppx.exe --cookie 'library-name="ocaml_int"' -o lib/parser.pp.ml --impl lib/parser.ml -corrected-suffix .ppx-corrected -diff-cmd - -dump-ast)
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamldep.opt -modules -impl lib/parser.pp.ml) > _build/default/lib/.ocaml_int.objs/ocaml_int__Parser.impl.d
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I lib/.ocaml_int.objs/byte -I /Users/briangwaltney/.opam/latest/lib/base -I /Users/briangwaltney/.opam/latest/lib/base/base_internalhash_types -I /Users/briangwaltney/.opam/latest/lib/base/caml -I /Users/briangwaltney/.opam/latest/lib/base/shadow_stdlib -I /Users/briangwaltney/.opam/latest/lib/ppx_compare/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/ppx_deriving/runtime -I /Users/briangwaltney/.opam/latest/lib/ppx_sexp_conv/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/result -I /Users/briangwaltney/.opam/latest/lib/sexplib0 -no-alias-deps -opaque -open Ocaml_int -o lib/.ocaml_int.objs/byte/ocaml_int__Parser.cmo -c -impl lib/parser.pp.ml)
+> File "lib/parser.ml", line 49, characters 27-37:
+> 49 |          | h :: t when h = RightParen -> exp, t
+>                                 ^^^^^^^^^^
+> Error: This expression has type t but an expression was expected of type
+>          int/2
+>        File "_none_", line 1:
+>          Definition of type int/2
+[2]
+$ (cd _build/.sandbox/d33d2743e3de904ecd6d483be603284b/default && .ppx/471203fdee24cbf364232811313833fe/ppx.exe --cookie 'library-name="ocaml_int"' -o lib/parser.pp.ml --impl lib/parser.ml -corrected-suffix .ppx-corrected -diff-cmd - -dump-ast)
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamldep.opt -modules -impl lib/parser.pp.ml) > _build/default/lib/.ocaml_int.objs/ocaml_int__Parser.impl.d
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I lib/.ocaml_int.objs/byte -I /Users/briangwaltney/.opam/latest/lib/base -I /Users/briangwaltney/.opam/latest/lib/base/base_internalhash_types -I /Users/briangwaltney/.opam/latest/lib/base/caml -I /Users/briangwaltney/.opam/latest/lib/base/shadow_stdlib -I /Users/briangwaltney/.opam/latest/lib/ppx_compare/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/ppx_deriving/runtime -I /Users/briangwaltney/.opam/latest/lib/ppx_sexp_conv/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/result -I /Users/briangwaltney/.opam/latest/lib/sexplib0 -no-alias-deps -opaque -open Ocaml_int -o lib/.ocaml_int.objs/byte/ocaml_int__Parser.cmo -c -impl lib/parser.pp.ml)
+> File "lib/parser.ml", line 85, characters 8-24:
+> 85 |         print_token_list (tkn :: t);
+>              ^^^^^^^^^^^^^^^^
+> Error: Unbound value print_token_list
+[2]
+$ (cd _build/.sandbox/fb3404933067448af7c52775d85d79ba/default && .ppx/471203fdee24cbf364232811313833fe/ppx.exe --cookie 'library-name="ocaml_int"' -o lib/parser.pp.ml --impl lib/parser.ml -corrected-suffix .ppx-corrected -diff-cmd - -dump-ast)
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamldep.opt -modules -impl lib/parser.pp.ml) > _build/default/lib/.ocaml_int.objs/ocaml_int__Parser.impl.d
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I lib/.ocaml_int.objs/byte -I /Users/briangwaltney/.opam/latest/lib/base -I /Users/briangwaltney/.opam/latest/lib/base/base_internalhash_types -I /Users/briangwaltney/.opam/latest/lib/base/caml -I /Users/briangwaltney/.opam/latest/lib/base/shadow_stdlib -I /Users/briangwaltney/.opam/latest/lib/ppx_compare/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/ppx_deriving/runtime -I /Users/briangwaltney/.opam/latest/lib/ppx_sexp_conv/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/result -I /Users/briangwaltney/.opam/latest/lib/sexplib0 -no-alias-deps -opaque -open Ocaml_int -o lib/.ocaml_int.objs/byte/ocaml_int__Parser.cmo -c -impl lib/parser.pp.ml)
+> File "lib/parser.ml", line 85, characters 8-24:
+> 85 |         print_token_list (tkn :: t);
+>              ^^^^^^^^^^^^^^^^
+> Error: Unbound value print_token_list
+[2]
+$ (cd _build/.sandbox/8ab95349f426fa5b94963b7dc561eb54/default && .ppx/471203fdee24cbf364232811313833fe/ppx.exe --cookie 'library-name="ocaml_int"' -o lib/parser.pp.ml --impl lib/parser.ml -corrected-suffix .ppx-corrected -diff-cmd - -dump-ast)
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamldep.opt -modules -impl lib/parser.pp.ml) > _build/default/lib/.ocaml_int.objs/ocaml_int__Parser.impl.d
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I lib/.ocaml_int.objs/byte -I /Users/briangwaltney/.opam/latest/lib/base -I /Users/briangwaltney/.opam/latest/lib/base/base_internalhash_types -I /Users/briangwaltney/.opam/latest/lib/base/caml -I /Users/briangwaltney/.opam/latest/lib/base/shadow_stdlib -I /Users/briangwaltney/.opam/latest/lib/ppx_compare/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/ppx_deriving/runtime -I /Users/briangwaltney/.opam/latest/lib/ppx_sexp_conv/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/result -I /Users/briangwaltney/.opam/latest/lib/sexplib0 -no-alias-deps -opaque -open Ocaml_int -o lib/.ocaml_int.objs/byte/ocaml_int__Parser.cmo -c -impl lib/parser.pp.ml)
+> File "lib/parser.ml", line 86, characters 48-63:
+> 86 |         failwith ("bad prefix exp - " ^ (tkn |> string_of_token))
+>                                                      ^^^^^^^^^^^^^^^
+> Error: Unbound value string_of_token
+[2]
+$ (cd _build/.sandbox/b518dafe2865d7185beeea5d83f42b18/default && .ppx/471203fdee24cbf364232811313833fe/ppx.exe --cookie 'library-name="ocaml_int"' -o lib/parser.pp.ml --impl lib/parser.ml -corrected-suffix .ppx-corrected -diff-cmd - -dump-ast)
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamldep.opt -modules -impl lib/parser.pp.ml) > _build/default/lib/.ocaml_int.objs/ocaml_int__Parser.impl.d
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I lib/.ocaml_int.objs/byte -I /Users/briangwaltney/.opam/latest/lib/base -I /Users/briangwaltney/.opam/latest/lib/base/base_internalhash_types -I /Users/briangwaltney/.opam/latest/lib/base/caml -I /Users/briangwaltney/.opam/latest/lib/base/shadow_stdlib -I /Users/briangwaltney/.opam/latest/lib/ppx_compare/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/ppx_deriving/runtime -I /Users/briangwaltney/.opam/latest/lib/ppx_sexp_conv/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/result -I /Users/briangwaltney/.opam/latest/lib/sexplib0 -no-alias-deps -opaque -open Ocaml_int -o lib/.ocaml_int.objs/byte/ocaml_int__Parser.cmo -c -impl lib/parser.pp.ml)
+> File "lib/parser.ml", line 109, characters 13-28:
+> 109 |     let op = string_of_token op_tkn in
+>                    ^^^^^^^^^^^^^^^
+> Error: Unbound value string_of_token
+[2]
+$ (cd _build/.sandbox/6f2e576005bfd08e38c35dce7ead11e2/default && .ppx/471203fdee24cbf364232811313833fe/ppx.exe --cookie 'library-name="ocaml_int"' -o lib/parser.pp.ml --impl lib/parser.ml -corrected-suffix .ppx-corrected -diff-cmd - -dump-ast)
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamldep.opt -modules -impl lib/parser.pp.ml) > _build/default/lib/.ocaml_int.objs/ocaml_int__Parser.impl.d
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I lib/.ocaml_int.objs/byte -I /Users/briangwaltney/.opam/latest/lib/base -I /Users/briangwaltney/.opam/latest/lib/base/base_internalhash_types -I /Users/briangwaltney/.opam/latest/lib/base/caml -I /Users/briangwaltney/.opam/latest/lib/base/shadow_stdlib -I /Users/briangwaltney/.opam/latest/lib/ppx_compare/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/ppx_deriving/runtime -I /Users/briangwaltney/.opam/latest/lib/ppx_sexp_conv/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/result -I /Users/briangwaltney/.opam/latest/lib/sexplib0 -no-alias-deps -opaque -open Ocaml_int -o lib/.ocaml_int.objs/byte/ocaml_int__Parser.cmo -c -impl lib/parser.pp.ml)
+> File "lib/parser.ml", line 109, characters 27-33:
+> 109 |     let prec = prec_of_tkn op_tkn in
+>                                  ^^^^^^
+> Error: Unbound value op_tkn
+[2]
+$ (cd _build/.sandbox/26841047d316881b9c719df4833379c3/default && .ppx/471203fdee24cbf364232811313833fe/ppx.exe --cookie 'library-name="ocaml_int"' -o lib/parser.pp.ml --impl lib/parser.ml -corrected-suffix .ppx-corrected -diff-cmd - -dump-ast)
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamldep.opt -modules -impl lib/parser.pp.ml) > _build/default/lib/.ocaml_int.objs/ocaml_int__Parser.impl.d
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I lib/.ocaml_int.objs/byte -I /Users/briangwaltney/.opam/latest/lib/base -I /Users/briangwaltney/.opam/latest/lib/base/base_internalhash_types -I /Users/briangwaltney/.opam/latest/lib/base/caml -I /Users/briangwaltney/.opam/latest/lib/base/shadow_stdlib -I /Users/briangwaltney/.opam/latest/lib/ppx_compare/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/ppx_deriving/runtime -I /Users/briangwaltney/.opam/latest/lib/ppx_sexp_conv/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/result -I /Users/briangwaltney/.opam/latest/lib/sexplib0 -no-alias-deps -opaque -open Ocaml_int -o lib/.ocaml_int.objs/byte/ocaml_int__Parser.cmo -c -impl lib/parser.pp.ml)
+> File "lib/parser.ml", line 123, characters 18-30:
+> 123 |        | tkn when is_infix tkn = false -> left, t
+>                         ^^^^^^^^^^^^
+> Error: This expression has type bool/2 but an expression was expected of type
+>          int/2
+>        File "_none_", line 1:
+>          Definition of type bool/2
+>        File "_none_", line 1:
+>          Definition of type int/2
+[2]
+$ (cd _build/.sandbox/fa8f432893092d4f7df78a0c44d37581/default && .ppx/471203fdee24cbf364232811313833fe/ppx.exe --cookie 'library-name="ocaml_int"' -o lib/parser.pp.ml --impl lib/parser.ml -corrected-suffix .ppx-corrected -diff-cmd - -dump-ast)
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamldep.opt -modules -impl lib/parser.pp.ml) > _build/default/lib/.ocaml_int.objs/ocaml_int__Parser.impl.d
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I lib/.ocaml_int.objs/byte -I /Users/briangwaltney/.opam/latest/lib/base -I /Users/briangwaltney/.opam/latest/lib/base/base_internalhash_types -I /Users/briangwaltney/.opam/latest/lib/base/caml -I /Users/briangwaltney/.opam/latest/lib/base/shadow_stdlib -I /Users/briangwaltney/.opam/latest/lib/ppx_compare/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/ppx_deriving/runtime -I /Users/briangwaltney/.opam/latest/lib/ppx_sexp_conv/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/result -I /Users/briangwaltney/.opam/latest/lib/sexplib0 -no-alias-deps -opaque -open Ocaml_int -o lib/.ocaml_int.objs/byte/ocaml_int__Parser.cmo -c -impl lib/parser.pp.ml)
+> File "lib/parser.ml", line 143, characters 25-33:
+> 143 |        | RightBrace when is_block = true -> acc, t
+>                                ^^^^^^^^
+> Error: This expression has type bool/2 but an expression was expected of type
+>          int/2
+>        File "_none_", line 1:
+>          Definition of type bool/2
+>        File "_none_", line 1:
+>          Definition of type int/2
+[2]
+$ (cd _build/.sandbox/1191076d31e920e350fc5879a54b67cd/default && .ppx/471203fdee24cbf364232811313833fe/ppx.exe --cookie 'library-name="ocaml_int"' -o lib/parser.pp.ml --impl lib/parser.ml -corrected-suffix .ppx-corrected -diff-cmd - -dump-ast)
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamldep.opt -modules -impl lib/parser.pp.ml) > _build/default/lib/.ocaml_int.objs/ocaml_int__Parser.impl.d
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I lib/.ocaml_int.objs/byte -I /Users/briangwaltney/.opam/latest/lib/base -I /Users/briangwaltney/.opam/latest/lib/base/base_internalhash_types -I /Users/briangwaltney/.opam/latest/lib/base/caml -I /Users/briangwaltney/.opam/latest/lib/base/shadow_stdlib -I /Users/briangwaltney/.opam/latest/lib/ppx_compare/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/ppx_deriving/runtime -I /Users/briangwaltney/.opam/latest/lib/ppx_sexp_conv/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/result -I /Users/briangwaltney/.opam/latest/lib/sexplib0 -no-alias-deps -opaque -open Ocaml_int -o lib/.ocaml_int.objs/byte/ocaml_int__Parser.cmo -c -impl lib/parser.pp.ml)
+> File "lib/parser.ml", line 128, characters 9-40:
+> 128 |          loop new_t (prec_of_tkn op) exp)
+>                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> Error: The function 'loop' has type
+>          Ocaml_int.Token.t list ->
+>          Ocaml_int.Ast.expression ->
+>          Ocaml_int.Ast.expression * Ocaml_int.Token.t list
+>        It is applied to too many arguments
+> File "lib/parser.ml", line 128, characters 37-40:
+> 128 |          loop new_t (prec_of_tkn op) exp)
+>                                            ^^^
+>   This extra argument is not expected.
+[2]
+$ (cd _build/.sandbox/fa8f432893092d4f7df78a0c44d37581/default && .ppx/471203fdee24cbf364232811313833fe/ppx.exe --cookie 'library-name="ocaml_int"' -o lib/parser.pp.ml --impl lib/parser.ml -corrected-suffix .ppx-corrected -diff-cmd - -dump-ast)
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamldep.opt -modules -impl lib/parser.pp.ml) > _build/default/lib/.ocaml_int.objs/ocaml_int__Parser.impl.d
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I lib/.ocaml_int.objs/byte -I /Users/briangwaltney/.opam/latest/lib/base -I /Users/briangwaltney/.opam/latest/lib/base/base_internalhash_types -I /Users/briangwaltney/.opam/latest/lib/base/caml -I /Users/briangwaltney/.opam/latest/lib/base/shadow_stdlib -I /Users/briangwaltney/.opam/latest/lib/ppx_compare/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/ppx_deriving/runtime -I /Users/briangwaltney/.opam/latest/lib/ppx_sexp_conv/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/result -I /Users/briangwaltney/.opam/latest/lib/sexplib0 -no-alias-deps -opaque -open Ocaml_int -o lib/.ocaml_int.objs/byte/ocaml_int__Parser.cmo -c -impl lib/parser.pp.ml)
+> File "lib/parser.ml", line 143, characters 25-33:
+> 143 |        | RightBrace when is_block = true -> acc, t
+>                                ^^^^^^^^
+> Error: This expression has type bool/2 but an expression was expected of type
+>          int/2
+>        File "_none_", line 1:
+>          Definition of type bool/2
+>        File "_none_", line 1:
+>          Definition of type int/2
+[2]
+$ (cd _build/.sandbox/5dac137be4637db2e588e97bfb84c343/default && .ppx/471203fdee24cbf364232811313833fe/ppx.exe --cookie 'library-name="ocaml_int"' -o lib/parser.pp.ml --impl lib/parser.ml -corrected-suffix .ppx-corrected -diff-cmd - -dump-ast)
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamldep.opt -modules -impl lib/parser.pp.ml) > _build/default/lib/.ocaml_int.objs/ocaml_int__Parser.impl.d
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I lib/.ocaml_int.objs/byte -I /Users/briangwaltney/.opam/latest/lib/base -I /Users/briangwaltney/.opam/latest/lib/base/base_internalhash_types -I /Users/briangwaltney/.opam/latest/lib/base/caml -I /Users/briangwaltney/.opam/latest/lib/base/shadow_stdlib -I /Users/briangwaltney/.opam/latest/lib/ppx_compare/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/ppx_deriving/runtime -I /Users/briangwaltney/.opam/latest/lib/ppx_sexp_conv/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/result -I /Users/briangwaltney/.opam/latest/lib/sexplib0 -no-alias-deps -opaque -open Ocaml_int -o lib/.ocaml_int.objs/byte/ocaml_int__Parser.cmo -c -impl lib/parser.pp.ml)
+> File "lib/parser.ml", line 143, characters 25-33:
+> 143 |        | RightBrace when is_block = true -> acc, t
+>                                ^^^^^^^^
+> Error: This expression has type bool/2 but an expression was expected of type
+>          int/2
+>        File "_none_", line 1:
+>          Definition of type bool/2
+>        File "_none_", line 1:
+>          Definition of type int/2
+[2]
+$ (cd _build/.sandbox/8299657fc20660a3fd4b640254901e0e/default && .ppx/471203fdee24cbf364232811313833fe/ppx.exe --cookie 'library-name="ocaml_int"' -o lib/parser.pp.ml --impl lib/parser.ml -corrected-suffix .ppx-corrected -diff-cmd - -dump-ast)
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamldep.opt -modules -impl lib/parser.pp.ml) > _build/default/lib/.ocaml_int.objs/ocaml_int__Parser.impl.d
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I lib/.ocaml_int.objs/byte -I /Users/briangwaltney/.opam/latest/lib/base -I /Users/briangwaltney/.opam/latest/lib/base/base_internalhash_types -I /Users/briangwaltney/.opam/latest/lib/base/caml -I /Users/briangwaltney/.opam/latest/lib/base/shadow_stdlib -I /Users/briangwaltney/.opam/latest/lib/ppx_compare/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/ppx_deriving/runtime -I /Users/briangwaltney/.opam/latest/lib/ppx_sexp_conv/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/result -I /Users/briangwaltney/.opam/latest/lib/sexplib0 -no-alias-deps -opaque -open Ocaml_int -o lib/.ocaml_int.objs/byte/ocaml_int__Parser.cmo -c -impl lib/parser.pp.ml)
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I lib/.ocaml_int.objs/byte -I /Users/briangwaltney/.opam/latest/lib/base -I /Users/briangwaltney/.opam/latest/lib/base/base_internalhash_types -I /Users/briangwaltney/.opam/latest/lib/base/caml -I /Users/briangwaltney/.opam/latest/lib/base/shadow_stdlib -I /Users/briangwaltney/.opam/latest/lib/ppx_compare/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/ppx_deriving/runtime -I /Users/briangwaltney/.opam/latest/lib/ppx_sexp_conv/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/result -I /Users/briangwaltney/.opam/latest/lib/sexplib0 -no-alias-deps -opaque -open Ocaml_int -o lib/.ocaml_int.objs/byte/ocaml_int__Eval.cmo -c -impl lib/eval.pp.ml)
+> File "lib/eval.ml", line 11, characters 7-10:
+> 11 |      | "!" ->
+>             ^^^
+> Error: This pattern matches values of type string
+>        but a pattern was expected which matches values of type Token.t
+[2]
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I lib/.ocaml_int.objs/byte -I lib/.ocaml_int.objs/native -I /Users/briangwaltney/.opam/latest/lib/base -I /Users/briangwaltney/.opam/latest/lib/base/base_internalhash_types -I /Users/briangwaltney/.opam/latest/lib/base/caml -I /Users/briangwaltney/.opam/latest/lib/base/shadow_stdlib -I /Users/briangwaltney/.opam/latest/lib/ppx_compare/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/ppx_deriving/runtime -I /Users/briangwaltney/.opam/latest/lib/ppx_sexp_conv/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/result -I /Users/briangwaltney/.opam/latest/lib/sexplib0 -intf-suffix .ml -no-alias-deps -opaque -open Ocaml_int -o lib/.ocaml_int.objs/native/ocaml_int__Parser.cmx -c -impl lib/parser.pp.ml)
+$ (cd _build/.sandbox/b757ddde2943dde8d9719196c6a65d7b/default && .ppx/471203fdee24cbf364232811313833fe/ppx.exe --cookie 'library-name="ocaml_int"' -o lib/eval.pp.ml --impl lib/eval.ml -corrected-suffix .ppx-corrected -diff-cmd - -dump-ast)
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamldep.opt -modules -impl lib/eval.pp.ml) > _build/default/lib/.ocaml_int.objs/ocaml_int__Eval.impl.d
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I lib/.ocaml_int.objs/byte -I /Users/briangwaltney/.opam/latest/lib/base -I /Users/briangwaltney/.opam/latest/lib/base/base_internalhash_types -I /Users/briangwaltney/.opam/latest/lib/base/caml -I /Users/briangwaltney/.opam/latest/lib/base/shadow_stdlib -I /Users/briangwaltney/.opam/latest/lib/ppx_compare/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/ppx_deriving/runtime -I /Users/briangwaltney/.opam/latest/lib/ppx_sexp_conv/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/result -I /Users/briangwaltney/.opam/latest/lib/sexplib0 -no-alias-deps -opaque -open Ocaml_int -o lib/.ocaml_int.objs/byte/ocaml_int__Eval.cmo -c -impl lib/eval.pp.ml)
+> File "lib/eval.ml", line 11, characters 7-10:
+> 11 |      | "!" ->
+>             ^^^
+> Error: This pattern matches values of type string
+>        but a pattern was expected which matches values of type Token.t
+[2]
+$ (cd _build/.sandbox/78b08bac1f7af15320f92f1af09b2afd/default && .ppx/471203fdee24cbf364232811313833fe/ppx.exe --cookie 'library-name="ocaml_int"' -o lib/eval.pp.ml --impl lib/eval.ml -corrected-suffix .ppx-corrected -diff-cmd - -dump-ast)
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamldep.opt -modules -impl lib/eval.pp.ml) > _build/default/lib/.ocaml_int.objs/ocaml_int__Eval.impl.d
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I lib/.ocaml_int.objs/byte -I /Users/briangwaltney/.opam/latest/lib/base -I /Users/briangwaltney/.opam/latest/lib/base/base_internalhash_types -I /Users/briangwaltney/.opam/latest/lib/base/caml -I /Users/briangwaltney/.opam/latest/lib/base/shadow_stdlib -I /Users/briangwaltney/.opam/latest/lib/ppx_compare/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/ppx_deriving/runtime -I /Users/briangwaltney/.opam/latest/lib/ppx_sexp_conv/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/result -I /Users/briangwaltney/.opam/latest/lib/sexplib0 -no-alias-deps -opaque -open Ocaml_int -o lib/.ocaml_int.objs/byte/ocaml_int__Eval.cmo -c -impl lib/eval.pp.ml)
+> File "lib/eval.ml", line 11, characters 7-10:
+> 11 |      | "!" ->
+>             ^^^
+> Error: This pattern matches values of type string
+>        but a pattern was expected which matches values of type Token.t
+[2]
+$ (cd _build/.sandbox/a883f3bf2677c8c262a16140eb976c90/default && .ppx/471203fdee24cbf364232811313833fe/ppx.exe --cookie 'library-name="ocaml_int"' -o lib/eval.pp.ml --impl lib/eval.ml -corrected-suffix .ppx-corrected -diff-cmd - -dump-ast)
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamldep.opt -modules -impl lib/eval.pp.ml) > _build/default/lib/.ocaml_int.objs/ocaml_int__Eval.impl.d
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I lib/.ocaml_int.objs/byte -I /Users/briangwaltney/.opam/latest/lib/base -I /Users/briangwaltney/.opam/latest/lib/base/base_internalhash_types -I /Users/briangwaltney/.opam/latest/lib/base/caml -I /Users/briangwaltney/.opam/latest/lib/base/shadow_stdlib -I /Users/briangwaltney/.opam/latest/lib/ppx_compare/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/ppx_deriving/runtime -I /Users/briangwaltney/.opam/latest/lib/ppx_sexp_conv/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/result -I /Users/briangwaltney/.opam/latest/lib/sexplib0 -no-alias-deps -opaque -open Ocaml_int -o lib/.ocaml_int.objs/byte/ocaml_int__Eval.cmo -c -impl lib/eval.pp.ml)
+> File "lib/eval.ml", line 11, characters 7-10:
+> 11 |      | "!" ->
+>             ^^^
+> Error: This pattern matches values of type string
+>        but a pattern was expected which matches values of type Token.t
+[2]
+$ (cd _build/.sandbox/fd2d0a131df999acbaa7f7464e7595df/default && .ppx/471203fdee24cbf364232811313833fe/ppx.exe --cookie 'library-name="ocaml_int"' -o lib/eval.pp.ml --impl lib/eval.ml -corrected-suffix .ppx-corrected -diff-cmd - -dump-ast)
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamldep.opt -modules -impl lib/eval.pp.ml) > _build/default/lib/.ocaml_int.objs/ocaml_int__Eval.impl.d
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I lib/.ocaml_int.objs/byte -I /Users/briangwaltney/.opam/latest/lib/base -I /Users/briangwaltney/.opam/latest/lib/base/base_internalhash_types -I /Users/briangwaltney/.opam/latest/lib/base/caml -I /Users/briangwaltney/.opam/latest/lib/base/shadow_stdlib -I /Users/briangwaltney/.opam/latest/lib/ppx_compare/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/ppx_deriving/runtime -I /Users/briangwaltney/.opam/latest/lib/ppx_sexp_conv/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/result -I /Users/briangwaltney/.opam/latest/lib/sexplib0 -no-alias-deps -opaque -open Ocaml_int -o lib/.ocaml_int.objs/byte/ocaml_int__Eval.cmo -c -impl lib/eval.pp.ml)
+> File "lib/eval.ml", line 2, characters 0-11:
+> 2 | open Parser
+>     ^^^^^^^^^^^
+> Error (warning 33 [unused-open]): unused open Ocaml_int.Parser.
+[2]
+$ (cd _build/.sandbox/aac7992d5b0461f8e7f7be72786d68e3/default && .ppx/471203fdee24cbf364232811313833fe/ppx.exe --cookie 'library-name="ocaml_int"' -o lib/eval.pp.ml --impl lib/eval.ml -corrected-suffix .ppx-corrected -diff-cmd - -dump-ast)
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamldep.opt -modules -impl lib/eval.pp.ml) > _build/default/lib/.ocaml_int.objs/ocaml_int__Eval.impl.d
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I lib/.ocaml_int.objs/byte -I /Users/briangwaltney/.opam/latest/lib/base -I /Users/briangwaltney/.opam/latest/lib/base/base_internalhash_types -I /Users/briangwaltney/.opam/latest/lib/base/caml -I /Users/briangwaltney/.opam/latest/lib/base/shadow_stdlib -I /Users/briangwaltney/.opam/latest/lib/ppx_compare/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/ppx_deriving/runtime -I /Users/briangwaltney/.opam/latest/lib/ppx_sexp_conv/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/result -I /Users/briangwaltney/.opam/latest/lib/sexplib0 -no-alias-deps -opaque -open Ocaml_int -o lib/.ocaml_int.objs/byte/ocaml_int__Eval.cmo -c -impl lib/eval.pp.ml)
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I test/.ocaml_int.eobjs/byte -I /Users/briangwaltney/.opam/latest/lib/base -I /Users/briangwaltney/.opam/latest/lib/base/base_internalhash_types -I /Users/briangwaltney/.opam/latest/lib/base/caml -I /Users/briangwaltney/.opam/latest/lib/base/shadow_stdlib -I /Users/briangwaltney/.opam/latest/lib/ppx_compare/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/ppx_deriving/runtime -I /Users/briangwaltney/.opam/latest/lib/ppx_sexp_conv/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/result -I /Users/briangwaltney/.opam/latest/lib/sexplib0 -I lib/.ocaml_int.objs/byte -no-alias-deps -opaque -o test/.ocaml_int.eobjs/byte/dune__exe__Ocaml_int.cmi -c -intf test/ocaml_int.mli)
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I test/.ocaml_int.eobjs/byte -I test/.ocaml_int.eobjs/native -I /Users/briangwaltney/.opam/latest/lib/base -I /Users/briangwaltney/.opam/latest/lib/base/base_internalhash_types -I /Users/briangwaltney/.opam/latest/lib/base/caml -I /Users/briangwaltney/.opam/latest/lib/base/shadow_stdlib -I /Users/briangwaltney/.opam/latest/lib/ppx_compare/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/ppx_deriving/runtime -I /Users/briangwaltney/.opam/latest/lib/ppx_sexp_conv/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/result -I /Users/briangwaltney/.opam/latest/lib/sexplib0 -I lib/.ocaml_int.objs/byte -I lib/.ocaml_int.objs/native -intf-suffix .ml -no-alias-deps -opaque -o test/.ocaml_int.eobjs/native/dune__exe__Ocaml_int.cmx -c -impl test/ocaml_int.ml)
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I lib/.ocaml_int.objs/byte -I lib/.ocaml_int.objs/native -I /Users/briangwaltney/.opam/latest/lib/base -I /Users/briangwaltney/.opam/latest/lib/base/base_internalhash_types -I /Users/briangwaltney/.opam/latest/lib/base/caml -I /Users/briangwaltney/.opam/latest/lib/base/shadow_stdlib -I /Users/briangwaltney/.opam/latest/lib/ppx_compare/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/ppx_deriving/runtime -I /Users/briangwaltney/.opam/latest/lib/ppx_sexp_conv/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/result -I /Users/briangwaltney/.opam/latest/lib/sexplib0 -intf-suffix .ml -no-alias-deps -opaque -open Ocaml_int -o lib/.ocaml_int.objs/native/ocaml_int__Eval.cmx -c -impl lib/eval.pp.ml)
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -a -o lib/ocaml_int.cmxa lib/.ocaml_int.objs/native/ocaml_int.cmx lib/.ocaml_int.objs/native/ocaml_int__Token.cmx lib/.ocaml_int.objs/native/ocaml_int__Ast.cmx lib/.ocaml_int.objs/native/ocaml_int__Lexer.cmx lib/.ocaml_int.objs/native/ocaml_int__Parser.cmx lib/.ocaml_int.objs/native/ocaml_int__Object.cmx lib/.ocaml_int.objs/native/ocaml_int__Eval.cmx)
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -o test/ocaml_int.exe /Users/briangwaltney/.opam/latest/lib/base/base_internalhash_types/base_internalhash_types.cmxa -I /Users/briangwaltney/.opam/latest/lib/base/base_internalhash_types /Users/briangwaltney/.opam/latest/lib/base/caml/caml.cmxa /Users/briangwaltney/.opam/latest/lib/sexplib0/sexplib0.cmxa /Users/briangwaltney/.opam/latest/lib/base/shadow_stdlib/shadow_stdlib.cmxa /Users/briangwaltney/.opam/latest/lib/base/base.cmxa -I /Users/briangwaltney/.opam/latest/lib/base /Users/briangwaltney/.opam/latest/lib/ppx_sexp_conv/runtime-lib/ppx_sexp_conv_lib.cmxa /Users/briangwaltney/.opam/latest/lib/result/result.cmxa /Users/briangwaltney/.opam/latest/lib/ppx_deriving/runtime/ppx_deriving_runtime.cmxa /Users/briangwaltney/.opam/latest/lib/ppx_compare/runtime-lib/ppx_compare_lib.cmxa lib/ocaml_int.cmxa test/.ocaml_int.eobjs/native/dune__exe__Ocaml_int.cmx)
+$ (cd _build/.sandbox/5c6e870b7db3f1e1bcd9730d9d74ae8e/default && .ppx/471203fdee24cbf364232811313833fe/ppx.exe --cookie 'library-name="ocaml_int"' -o lib/parser.pp.ml --impl lib/parser.ml -corrected-suffix .ppx-corrected -diff-cmd - -dump-ast)
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamldep.opt -modules -impl lib/parser.pp.ml) > _build/default/lib/.ocaml_int.objs/ocaml_int__Parser.impl.d
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I lib/.ocaml_int.objs/byte -I /Users/briangwaltney/.opam/latest/lib/base -I /Users/briangwaltney/.opam/latest/lib/base/base_internalhash_types -I /Users/briangwaltney/.opam/latest/lib/base/caml -I /Users/briangwaltney/.opam/latest/lib/base/shadow_stdlib -I /Users/briangwaltney/.opam/latest/lib/ppx_compare/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/ppx_deriving/runtime -I /Users/briangwaltney/.opam/latest/lib/ppx_sexp_conv/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/result -I /Users/briangwaltney/.opam/latest/lib/sexplib0 -no-alias-deps -opaque -open Ocaml_int -o lib/.ocaml_int.objs/byte/ocaml_int__Parser.cmo -c -impl lib/parser.pp.ml)
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I test/.ocaml_int.eobjs/byte -I /Users/briangwaltney/.opam/latest/lib/base -I /Users/briangwaltney/.opam/latest/lib/base/base_internalhash_types -I /Users/briangwaltney/.opam/latest/lib/base/caml -I /Users/briangwaltney/.opam/latest/lib/base/shadow_stdlib -I /Users/briangwaltney/.opam/latest/lib/ppx_compare/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/ppx_deriving/runtime -I /Users/briangwaltney/.opam/latest/lib/ppx_sexp_conv/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/result -I /Users/briangwaltney/.opam/latest/lib/sexplib0 -I lib/.ocaml_int.objs/byte -no-alias-deps -opaque -o test/.ocaml_int.eobjs/byte/dune__exe__Ocaml_int.cmi -c -intf test/ocaml_int.mli)
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I test/.ocaml_int.eobjs/byte -I test/.ocaml_int.eobjs/native -I /Users/briangwaltney/.opam/latest/lib/base -I /Users/briangwaltney/.opam/latest/lib/base/base_internalhash_types -I /Users/briangwaltney/.opam/latest/lib/base/caml -I /Users/briangwaltney/.opam/latest/lib/base/shadow_stdlib -I /Users/briangwaltney/.opam/latest/lib/ppx_compare/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/ppx_deriving/runtime -I /Users/briangwaltney/.opam/latest/lib/ppx_sexp_conv/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/result -I /Users/briangwaltney/.opam/latest/lib/sexplib0 -I lib/.ocaml_int.objs/byte -I lib/.ocaml_int.objs/native -intf-suffix .ml -no-alias-deps -opaque -o test/.ocaml_int.eobjs/native/dune__exe__Ocaml_int.cmx -c -impl test/ocaml_int.ml)
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I lib/.ocaml_int.objs/byte -I lib/.ocaml_int.objs/native -I /Users/briangwaltney/.opam/latest/lib/base -I /Users/briangwaltney/.opam/latest/lib/base/base_internalhash_types -I /Users/briangwaltney/.opam/latest/lib/base/caml -I /Users/briangwaltney/.opam/latest/lib/base/shadow_stdlib -I /Users/briangwaltney/.opam/latest/lib/ppx_compare/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/ppx_deriving/runtime -I /Users/briangwaltney/.opam/latest/lib/ppx_sexp_conv/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/result -I /Users/briangwaltney/.opam/latest/lib/sexplib0 -intf-suffix .ml -no-alias-deps -opaque -open Ocaml_int -o lib/.ocaml_int.objs/native/ocaml_int__Parser.cmx -c -impl lib/parser.pp.ml)
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -a -o lib/ocaml_int.cmxa lib/.ocaml_int.objs/native/ocaml_int.cmx lib/.ocaml_int.objs/native/ocaml_int__Token.cmx lib/.ocaml_int.objs/native/ocaml_int__Ast.cmx lib/.ocaml_int.objs/native/ocaml_int__Lexer.cmx lib/.ocaml_int.objs/native/ocaml_int__Parser.cmx lib/.ocaml_int.objs/native/ocaml_int__Object.cmx lib/.ocaml_int.objs/native/ocaml_int__Eval.cmx)
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -o test/ocaml_int.exe /Users/briangwaltney/.opam/latest/lib/base/base_internalhash_types/base_internalhash_types.cmxa -I /Users/briangwaltney/.opam/latest/lib/base/base_internalhash_types /Users/briangwaltney/.opam/latest/lib/base/caml/caml.cmxa /Users/briangwaltney/.opam/latest/lib/sexplib0/sexplib0.cmxa /Users/briangwaltney/.opam/latest/lib/base/shadow_stdlib/shadow_stdlib.cmxa /Users/briangwaltney/.opam/latest/lib/base/base.cmxa -I /Users/briangwaltney/.opam/latest/lib/base /Users/briangwaltney/.opam/latest/lib/ppx_sexp_conv/runtime-lib/ppx_sexp_conv_lib.cmxa /Users/briangwaltney/.opam/latest/lib/result/result.cmxa /Users/briangwaltney/.opam/latest/lib/ppx_deriving/runtime/ppx_deriving_runtime.cmxa /Users/briangwaltney/.opam/latest/lib/ppx_compare/runtime-lib/ppx_compare_lib.cmxa lib/ocaml_int.cmxa test/.ocaml_int.eobjs/native/dune__exe__Ocaml_int.cmx)
+$ (cd _build/.sandbox/1529d21654745a3e184efb2b453c4542/default && .ppx/471203fdee24cbf364232811313833fe/ppx.exe --cookie 'library-name="ocaml_int"' -o lib/parser.pp.ml --impl lib/parser.ml -corrected-suffix .ppx-corrected -diff-cmd - -dump-ast)
+> File "lib/parser.ml", line 29, characters 4-7:
+> 29 | and rec expect_peek tkn lst =
+>          ^^^
+> Error: Syntax error
+[1]
+$ (cd _build/.sandbox/9608289bcb653d2e9cd83bd4443f00cc/default && .ppx/471203fdee24cbf364232811313833fe/ppx.exe --cookie 'library-name="ocaml_int"' -o lib/parser.pp.ml --impl lib/parser.ml -corrected-suffix .ppx-corrected -diff-cmd - -dump-ast)
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamldep.opt -modules -impl lib/parser.pp.ml) > _build/default/lib/.ocaml_int.objs/ocaml_int__Parser.impl.d
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I lib/.ocaml_int.objs/byte -I /Users/briangwaltney/.opam/latest/lib/base -I /Users/briangwaltney/.opam/latest/lib/base/base_internalhash_types -I /Users/briangwaltney/.opam/latest/lib/base/caml -I /Users/briangwaltney/.opam/latest/lib/base/shadow_stdlib -I /Users/briangwaltney/.opam/latest/lib/ppx_compare/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/ppx_deriving/runtime -I /Users/briangwaltney/.opam/latest/lib/ppx_sexp_conv/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/result -I /Users/briangwaltney/.opam/latest/lib/sexplib0 -no-alias-deps -opaque -open Ocaml_int -o lib/.ocaml_int.objs/byte/ocaml_int__Parser.cmo -c -impl lib/parser.pp.ml)
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I test/.ocaml_int.eobjs/byte -I /Users/briangwaltney/.opam/latest/lib/base -I /Users/briangwaltney/.opam/latest/lib/base/base_internalhash_types -I /Users/briangwaltney/.opam/latest/lib/base/caml -I /Users/briangwaltney/.opam/latest/lib/base/shadow_stdlib -I /Users/briangwaltney/.opam/latest/lib/ppx_compare/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/ppx_deriving/runtime -I /Users/briangwaltney/.opam/latest/lib/ppx_sexp_conv/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/result -I /Users/briangwaltney/.opam/latest/lib/sexplib0 -I lib/.ocaml_int.objs/byte -no-alias-deps -opaque -o test/.ocaml_int.eobjs/byte/dune__exe__Ocaml_int.cmi -c -intf test/ocaml_int.mli)
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I test/.ocaml_int.eobjs/byte -I test/.ocaml_int.eobjs/native -I /Users/briangwaltney/.opam/latest/lib/base -I /Users/briangwaltney/.opam/latest/lib/base/base_internalhash_types -I /Users/briangwaltney/.opam/latest/lib/base/caml -I /Users/briangwaltney/.opam/latest/lib/base/shadow_stdlib -I /Users/briangwaltney/.opam/latest/lib/ppx_compare/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/ppx_deriving/runtime -I /Users/briangwaltney/.opam/latest/lib/ppx_sexp_conv/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/result -I /Users/briangwaltney/.opam/latest/lib/sexplib0 -I lib/.ocaml_int.objs/byte -I lib/.ocaml_int.objs/native -intf-suffix .ml -no-alias-deps -opaque -o test/.ocaml_int.eobjs/native/dune__exe__Ocaml_int.cmx -c -impl test/ocaml_int.ml)
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I lib/.ocaml_int.objs/byte -I lib/.ocaml_int.objs/native -I /Users/briangwaltney/.opam/latest/lib/base -I /Users/briangwaltney/.opam/latest/lib/base/base_internalhash_types -I /Users/briangwaltney/.opam/latest/lib/base/caml -I /Users/briangwaltney/.opam/latest/lib/base/shadow_stdlib -I /Users/briangwaltney/.opam/latest/lib/ppx_compare/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/ppx_deriving/runtime -I /Users/briangwaltney/.opam/latest/lib/ppx_sexp_conv/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/result -I /Users/briangwaltney/.opam/latest/lib/sexplib0 -intf-suffix .ml -no-alias-deps -opaque -open Ocaml_int -o lib/.ocaml_int.objs/native/ocaml_int__Parser.cmx -c -impl lib/parser.pp.ml)
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -a -o lib/ocaml_int.cmxa lib/.ocaml_int.objs/native/ocaml_int.cmx lib/.ocaml_int.objs/native/ocaml_int__Token.cmx lib/.ocaml_int.objs/native/ocaml_int__Ast.cmx lib/.ocaml_int.objs/native/ocaml_int__Lexer.cmx lib/.ocaml_int.objs/native/ocaml_int__Parser.cmx lib/.ocaml_int.objs/native/ocaml_int__Object.cmx lib/.ocaml_int.objs/native/ocaml_int__Eval.cmx)
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -o test/ocaml_int.exe /Users/briangwaltney/.opam/latest/lib/base/base_internalhash_types/base_internalhash_types.cmxa -I /Users/briangwaltney/.opam/latest/lib/base/base_internalhash_types /Users/briangwaltney/.opam/latest/lib/base/caml/caml.cmxa /Users/briangwaltney/.opam/latest/lib/sexplib0/sexplib0.cmxa /Users/briangwaltney/.opam/latest/lib/base/shadow_stdlib/shadow_stdlib.cmxa /Users/briangwaltney/.opam/latest/lib/base/base.cmxa -I /Users/briangwaltney/.opam/latest/lib/base /Users/briangwaltney/.opam/latest/lib/ppx_sexp_conv/runtime-lib/ppx_sexp_conv_lib.cmxa /Users/briangwaltney/.opam/latest/lib/result/result.cmxa /Users/briangwaltney/.opam/latest/lib/ppx_deriving/runtime/ppx_deriving_runtime.cmxa /Users/briangwaltney/.opam/latest/lib/ppx_compare/runtime-lib/ppx_compare_lib.cmxa lib/ocaml_int.cmxa test/.ocaml_int.eobjs/native/dune__exe__Ocaml_int.cmx)
+$ (cd _build/.sandbox/034e3b3dea58b3ed340bd2ed92b07d2a/default && .ppx/471203fdee24cbf364232811313833fe/ppx.exe --cookie 'library-name="ocaml_int"' -o lib/parser.pp.ml --impl lib/parser.ml -corrected-suffix .ppx-corrected -diff-cmd - -dump-ast)
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamldep.opt -modules -impl lib/parser.pp.ml) > _build/default/lib/.ocaml_int.objs/ocaml_int__Parser.impl.d
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I lib/.ocaml_int.objs/byte -I /Users/briangwaltney/.opam/latest/lib/base -I /Users/briangwaltney/.opam/latest/lib/base/base_internalhash_types -I /Users/briangwaltney/.opam/latest/lib/base/caml -I /Users/briangwaltney/.opam/latest/lib/base/shadow_stdlib -I /Users/briangwaltney/.opam/latest/lib/ppx_compare/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/ppx_deriving/runtime -I /Users/briangwaltney/.opam/latest/lib/ppx_sexp_conv/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/result -I /Users/briangwaltney/.opam/latest/lib/sexplib0 -no-alias-deps -opaque -open Ocaml_int -o lib/.ocaml_int.objs/byte/ocaml_int__Parser.cmo -c -impl lib/parser.pp.ml)
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I test/.ocaml_int.eobjs/byte -I /Users/briangwaltney/.opam/latest/lib/base -I /Users/briangwaltney/.opam/latest/lib/base/base_internalhash_types -I /Users/briangwaltney/.opam/latest/lib/base/caml -I /Users/briangwaltney/.opam/latest/lib/base/shadow_stdlib -I /Users/briangwaltney/.opam/latest/lib/ppx_compare/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/ppx_deriving/runtime -I /Users/briangwaltney/.opam/latest/lib/ppx_sexp_conv/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/result -I /Users/briangwaltney/.opam/latest/lib/sexplib0 -I lib/.ocaml_int.objs/byte -no-alias-deps -opaque -o test/.ocaml_int.eobjs/byte/dune__exe__Ocaml_int.cmi -c -intf test/ocaml_int.mli)
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I test/.ocaml_int.eobjs/byte -I test/.ocaml_int.eobjs/native -I /Users/briangwaltney/.opam/latest/lib/base -I /Users/briangwaltney/.opam/latest/lib/base/base_internalhash_types -I /Users/briangwaltney/.opam/latest/lib/base/caml -I /Users/briangwaltney/.opam/latest/lib/base/shadow_stdlib -I /Users/briangwaltney/.opam/latest/lib/ppx_compare/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/ppx_deriving/runtime -I /Users/briangwaltney/.opam/latest/lib/ppx_sexp_conv/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/result -I /Users/briangwaltney/.opam/latest/lib/sexplib0 -I lib/.ocaml_int.objs/byte -I lib/.ocaml_int.objs/native -intf-suffix .ml -no-alias-deps -opaque -o test/.ocaml_int.eobjs/native/dune__exe__Ocaml_int.cmx -c -impl test/ocaml_int.ml)
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I lib/.ocaml_int.objs/byte -I lib/.ocaml_int.objs/native -I /Users/briangwaltney/.opam/latest/lib/base -I /Users/briangwaltney/.opam/latest/lib/base/base_internalhash_types -I /Users/briangwaltney/.opam/latest/lib/base/caml -I /Users/briangwaltney/.opam/latest/lib/base/shadow_stdlib -I /Users/briangwaltney/.opam/latest/lib/ppx_compare/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/ppx_deriving/runtime -I /Users/briangwaltney/.opam/latest/lib/ppx_sexp_conv/runtime-lib -I /Users/briangwaltney/.opam/latest/lib/result -I /Users/briangwaltney/.opam/latest/lib/sexplib0 -intf-suffix .ml -no-alias-deps -opaque -open Ocaml_int -o lib/.ocaml_int.objs/native/ocaml_int__Parser.cmx -c -impl lib/parser.pp.ml)
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -a -o lib/ocaml_int.cmxa lib/.ocaml_int.objs/native/ocaml_int.cmx lib/.ocaml_int.objs/native/ocaml_int__Token.cmx lib/.ocaml_int.objs/native/ocaml_int__Ast.cmx lib/.ocaml_int.objs/native/ocaml_int__Lexer.cmx lib/.ocaml_int.objs/native/ocaml_int__Parser.cmx lib/.ocaml_int.objs/native/ocaml_int__Object.cmx lib/.ocaml_int.objs/native/ocaml_int__Eval.cmx)
+$ (cd _build/default && /Users/briangwaltney/.opam/latest/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -o test/ocaml_int.exe /Users/briangwaltney/.opam/latest/lib/base/base_internalhash_types/base_internalhash_types.cmxa -I /Users/briangwaltney/.opam/latest/lib/base/base_internalhash_types /Users/briangwaltney/.opam/latest/lib/base/caml/caml.cmxa /Users/briangwaltney/.opam/latest/lib/sexplib0/sexplib0.cmxa /Users/briangwaltney/.opam/latest/lib/base/shadow_stdlib/shadow_stdlib.cmxa /Users/briangwaltney/.opam/latest/lib/base/base.cmxa -I /Users/briangwaltney/.opam/latest/lib/base /Users/briangwaltney/.opam/latest/lib/ppx_sexp_conv/runtime-lib/ppx_sexp_conv_lib.cmxa /Users/briangwaltney/.opam/latest/lib/result/result.cmxa /Users/briangwaltney/.opam/latest/lib/ppx_deriving/runtime/ppx_deriving_runtime.cmxa /Users/briangwaltney/.opam/latest/lib/ppx_compare/runtime-lib/ppx_compare_lib.cmxa lib/ocaml_int.cmxa test/.ocaml_int.eobjs/native/dune__exe__Ocaml_int.cmx)

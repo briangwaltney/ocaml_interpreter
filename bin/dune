@@ -1,4 +1,4 @@
 (executables
- (public_names main repl)
- (names main repl)
+ (public_names main)
+ (names main)
  (libraries ocaml_int base))

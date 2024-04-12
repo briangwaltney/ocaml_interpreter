@@ -1,5 +1,5 @@
 (library
  (name ocaml_int)
  (libraries base)
- (flags
-  (-w -26)))
+ (preprocess
+  (pps ppx_deriving.show ppx_compare ppx_sexp_conv)))

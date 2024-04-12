@@ -1,3 +1,5 @@
+open! Base
+
 let read_file file = In_channel.with_open_text file In_channel.input_all
 
 type t =
@@ -7,7 +9,7 @@ type t =
   }
 
 let init input =
-  if Base.String.is_empty input
+  if String.is_empty input
   then { input; position = 0; ch = None }
   else { input; position = 0; ch = Some (String.get input 0) }
 ;;
@@ -20,7 +22,10 @@ let advance lexer =
     { lexer with position; ch = Some (String.get lexer.input position) })
 ;;
 
-let is_letter ch = ('a' <= ch && ch <= 'z') || ('A' <= ch && ch <= 'Z') || ch = '_'
+let is_letter ch =
+  let open Base.Poly in
+  ('a' <= ch && ch <= 'z') || ('A' <= ch && ch <= 'Z') || ch = '_'
+;;
 
 let is_whitespace = function
   | ' ' | '\t' | '\n' | '\r' -> true
@@ -51,7 +56,7 @@ let read_identifier lexer =
 
 let read_number lexer =
   let lexer, num = read_while lexer is_digit in
-  lexer, Token.Integer num
+  lexer, Token.Integer (num |> Int.of_string)
 ;;
 
 let skip_whitespace lexer =
@@ -76,7 +81,7 @@ let if_peaked lexer ch ~default ~matched =
   advance lexer, result
 ;;
 
-let rec next_token lexer =
+let next_token lexer =
   let lexer = skip_whitespace lexer in
   let open Token in
   match lexer.ch with
@@ -114,13 +119,4 @@ let tokens_of_string input =
     | Some token -> aux new_lexer (token :: acc)
   in
   aux lexer []
-;;
-
-let print_lexer lexer =
-  let _ = print_endline lexer.input in
-  let _ = print_int lexer.position in
-  let _ = print_endline "" in
-  match lexer.ch with
-  | None -> print_endline "No char"
-  | Some ch -> print_char ch
 ;;
